@@ -4,6 +4,7 @@
 // ================================================================
 
 import prisma from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 import { BUILTIN_TEMPLATES, type TemplateSeed, type VerticalTemplateConfig } from "./vertical-templates/seed";
 
 export type { TemplateSeed, VerticalTemplateConfig };
@@ -415,7 +416,7 @@ export async function applyTemplate(
   const applyAll = !categories || categories.length === 0;
 
   // 3. Apply changes in transaction
-  await prisma.$transaction(async (tx) => {
+  await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
     // ── Tenant branding ──
     if (applyAll || categories!.includes("branding")) {
       const brandingUpdate: any = {};
