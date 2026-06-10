@@ -1,36 +1,30 @@
-# ================================================================
-# SendMe Studio — CI Pipeline
-# ================================================================
-# Se ejecuta en push y pull_request sobre main y develop.
-# Pipeline: install → TypeScript check → Build
-# ================================================================
-
 name: CI
 
 on:
   push:
-    branches: [main, develop]
+    branches:
+      - main
+      - develop
+
   pull_request:
-    branches: [main, develop]
+    branches:
+      - main
+      - develop
 
 jobs:
   build:
     name: Build & Validate
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          node-version: 20
+          cache: npm
 
       - name: Install dependencies
         run: npm ci
@@ -40,8 +34,3 @@ jobs:
 
       - name: Build Next.js
         run: npm run build
-
-      - name: Verify build output
-        run: |
-          echo "✅ Build completed successfully"
-          echo "Pages generated: $(find .next -name '*.html' 2>/dev/null | wc -l)"
