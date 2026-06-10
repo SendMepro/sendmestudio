@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 
     // Add owner info (first user_tenant with role=owner)
     const enriched = await Promise.all(
-      tenants.map(async (t: { id: string; slug?: string; businessName?: string; ownerName?: string | null; ownerEmail?: string | null; licenseStatus?: string; isActive?: boolean; subscriptions?: unknown[]; _count?: { userTenants: number } }) => {
+      tenants.map(async (t: any) => {
         const owner = await prisma.userTenant.findFirst({
           where: { tenantId: t.id, role: "owner" },
           include: { user: { select: { name: true, email: true } } },
