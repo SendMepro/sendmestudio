@@ -1,0 +1,56 @@
+[
+  {
+    "id": "renata",
+    "name": "Renata",
+    "age": 31,
+    "role": "Color specialist",
+    "specialties": [
+      "Balayage",
+      "Color",
+      "Gloss"
+    ],
+    "experienceYears": 8,
+    "availableDays": [
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "workingHours": "10:00-18:30",
+    "servicesAllowed": [
+      "balayage",
+      "hidratacion"
+    ],
+    "bioShort": "Especialista en color luminoso y acabados naturales.",
+    "tone": "Calma, precisa y editorial.",
+    "photoUrl": "",
+    "status": "active"
+  },
+  {
+    "id": "martina",
+    "name": "Martina",
+    "age": 28,
+    "role": "Stylist",
+    "specialties": [
+      "Corte",
+      "Brushing",
+      "Tratamientos"
+    ],
+    "experienceYears": 6,
+    "availableDays": [
+      "Monday",
+      "Tuesday",
+      "Friday",
+      "Saturday"
+    ],
+    "workingHours": "10:00-17:00",
+    "servicesAllowed": [
+      "corte-mujer",
+      "hidratacion"
+    ],
+    "bioShort": "Stylist enfocada en cortes suaves y cuidado del cabello.",
+    "tone": "Cercana, práctica y elegante.",
+    "photoUrl": "",
+    "status": "active"
+  }
+]

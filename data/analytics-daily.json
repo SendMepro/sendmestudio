@@ -1,0 +1,1322 @@
+{
+  "2026-05-24": {
+    "date": "2026-05-24",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-31": {
+    "date": "2026-05-31",
+    "conversationsTotal": 3,
+    "conversationsAI": 1,
+    "conversationsHuman": 2,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 1,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 4,
+    "automationPercent": 33,
+    "coveragePercent": 33,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 1,
+        "human": 3
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 1
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-30": {
+    "date": "2026-05-30",
+    "conversationsTotal": 2,
+    "conversationsAI": 1,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 4,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 16,
+    "automationPercent": 50,
+    "coveragePercent": 50,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 4,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-27": {
+    "date": "2026-05-27",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-25": {
+    "date": "2026-05-25",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-29": {
+    "date": "2026-05-29",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-26": {
+    "date": "2026-05-26",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-05-28": {
+    "date": "2026-05-28",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-06-01": {
+    "date": "2026-06-01",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-06-02": {
+    "date": "2026-06-02",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 1
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-06-03": {
+    "date": "2026-06-03",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  },
+  "2026-06-04": {
+    "date": "2026-06-04",
+    "conversationsTotal": 1,
+    "conversationsAI": 0,
+    "conversationsHuman": 1,
+    "conversationsScheduled": 0,
+    "iaMessagesSent": 0,
+    "iaDraftsGenerated": 0,
+    "iaMinutesSaved": 0,
+    "automationPercent": 0,
+    "coveragePercent": 0,
+    "hourly": {
+      "10": {
+        "ai": 0,
+        "human": 0
+      },
+      "11": {
+        "ai": 0,
+        "human": 0
+      },
+      "12": {
+        "ai": 0,
+        "human": 0
+      },
+      "13": {
+        "ai": 0,
+        "human": 0
+      },
+      "14": {
+        "ai": 0,
+        "human": 0
+      },
+      "15": {
+        "ai": 0,
+        "human": 0
+      },
+      "16": {
+        "ai": 0,
+        "human": 0
+      },
+      "17": {
+        "ai": 0,
+        "human": 0
+      },
+      "18": {
+        "ai": 0,
+        "human": 0
+      },
+      "19": {
+        "ai": 0,
+        "human": 0
+      },
+      "20": {
+        "ai": 0,
+        "human": 0
+      },
+      "21": {
+        "ai": 0,
+        "human": 0
+      },
+      "22": {
+        "ai": 0,
+        "human": 0
+      },
+      "23": {
+        "ai": 0,
+        "human": 0
+      },
+      "00": {
+        "ai": 0,
+        "human": 0
+      },
+      "01": {
+        "ai": 0,
+        "human": 0
+      },
+      "02": {
+        "ai": 0,
+        "human": 0
+      },
+      "03": {
+        "ai": 0,
+        "human": 0
+      },
+      "04": {
+        "ai": 0,
+        "human": 0
+      },
+      "05": {
+        "ai": 0,
+        "human": 0
+      },
+      "06": {
+        "ai": 0,
+        "human": 0
+      },
+      "07": {
+        "ai": 0,
+        "human": 0
+      },
+      "08": {
+        "ai": 0,
+        "human": 0
+      },
+      "09": {
+        "ai": 0,
+        "human": 0
+      }
+    }
+  }
+}

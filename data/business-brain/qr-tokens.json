@@ -1,0 +1,42 @@
+[
+  {
+    "token": "a4ef7a88-ca6b-4b57-bb07-9c19c2fcaba8",
+    "shortCode": "UDEB58",
+    "createdAt": 1780044220528,
+    "expiresAt": 1780045120528,
+    "used": false,
+    "clientSlug": "MaiteGuerra.cl"
+  },
+  {
+    "token": "8d9fa1c5-00c8-4f55-b94c-79e892fed6ce",
+    "shortCode": "PCGG8H",
+    "createdAt": 1780044395869,
+    "expiresAt": 1780045295869,
+    "used": false,
+    "clientSlug": "MaiteGuerra.cl"
+  },
+  {
+    "token": "9ed2beab-4fba-4453-9bf9-60ed71b60d5d",
+    "shortCode": "56CBMM",
+    "createdAt": 1780044420956,
+    "expiresAt": 1780045320956,
+    "used": false,
+    "clientSlug": "MaiteGuerra.cl"
+  },
+  {
+    "token": "40155fb8-044f-481b-b079-fbf5b091a025",
+    "shortCode": "GSUNKZ",
+    "createdAt": 1780044597473,
+    "expiresAt": 1780045497473,
+    "used": false,
+    "clientSlug": "MaiteGuerra.cl"
+  },
+  {
+    "token": "e345d165-ca1c-4df5-8d0a-7592d4bd278c",
+    "shortCode": "GMZHBD",
+    "createdAt": 1780044912069,
+    "expiresAt": 1780045812069,
+    "used": false,
+    "clientSlug": "MaiteGuerra.cl"
+  }
+]

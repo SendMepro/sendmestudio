@@ -1,0 +1,98 @@
+[
+  {
+    "id": "balayage",
+    "name": "Balayage",
+    "category": "Color",
+    "description": "Iluminación personalizada con efecto natural y acabado editorial.",
+    "shortPitch": "Dimensión suave, brillo luminoso y movimiento natural.",
+    "priceFrom": 85000,
+    "priceTo": 160000,
+    "durationMinutes": 180,
+    "requiredDeposit": true,
+    "keywords": [
+      "balayage",
+      "mechas",
+      "rubio",
+      "iluminar"
+    ],
+    "tags": [
+      "color",
+      "premium",
+      "diagnóstico"
+    ],
+    "upsells": [
+      "Gloss",
+      "Olaplex",
+      "Hidratación"
+    ],
+    "contraindications": [
+      "Cabello muy sensibilizado sin evaluación previa"
+    ],
+    "preparationNotes": "Enviar foto del cabello con luz natural antes de confirmar.",
+    "aftercareNotes": "Usar shampoo sin sulfatos y agendar gloss de mantenimiento.",
+    "suggestedReply": "Sí, trabajamos balayage con diagnóstico previo para cuidar el resultado.",
+    "supportCardText": "Balayage · desde $85.000 · 180 min · sugerir foto previa.",
+    "campaignText": "Balayage luminoso con acabado natural y cuidado premium."
+  },
+  {
+    "id": "corte-mujer",
+    "name": "Corte mujer",
+    "category": "Haircut",
+    "description": "Corte personalizado según rostro, textura y estilo de vida.",
+    "shortPitch": "Forma, movimiento y acabado pulido.",
+    "priceFrom": 28000,
+    "priceTo": 45000,
+    "durationMinutes": 60,
+    "requiredDeposit": false,
+    "keywords": [
+      "corte",
+      "capas",
+      "flequillo"
+    ],
+    "tags": [
+      "corte",
+      "styling"
+    ],
+    "upsells": [
+      "Brushing",
+      "Tratamiento"
+    ],
+    "contraindications": [],
+    "preparationNotes": "Traer referencias visuales si busca un cambio marcado.",
+    "aftercareNotes": "Revisar mantenimiento cada 8 a 10 semanas.",
+    "suggestedReply": "Podemos ayudarte con un corte personalizado según tu textura y objetivo.",
+    "supportCardText": "Corte mujer · desde $28.000 · 60 min.",
+    "campaignText": "Cortes con movimiento natural y terminación editorial."
+  },
+  {
+    "id": "hidratacion",
+    "name": "Hidratación",
+    "category": "Treatment",
+    "description": "Ritual de nutrición para suavidad, brillo y control del frizz.",
+    "shortPitch": "Suavidad inmediata y brillo saludable.",
+    "priceFrom": 35000,
+    "priceTo": 65000,
+    "durationMinutes": 75,
+    "requiredDeposit": false,
+    "keywords": [
+      "hidratación",
+      "seco",
+      "frizz",
+      "tratamiento"
+    ],
+    "tags": [
+      "wellness",
+      "cuidado"
+    ],
+    "upsells": [
+      "Brushing",
+      "Gloss"
+    ],
+    "contraindications": [],
+    "preparationNotes": "Ideal si el cabello se siente opaco o áspero.",
+    "aftercareNotes": "Mantener con mascarilla semanal y protector térmico.",
+    "suggestedReply": "Sí, tenemos hidratación para devolver suavidad, brillo y movimiento.",
+    "supportCardText": "Hidratación · desde $35.000 · 75 min.",
+    "campaignText": "Ritual de hidratación para un cabello suave, luminoso y cuidado."
+  }
+]

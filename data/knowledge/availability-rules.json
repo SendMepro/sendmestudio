@@ -1,0 +1,20 @@
+{
+  "durationByService": {
+    "balayage": 180,
+    "corte-mujer": 60,
+    "hidratacion": 75
+  },
+  "stylistAvailability": {},
+  "blockedDates": [],
+  "dailyCapacity": 12,
+  "vipPriority": true,
+  "bufferBetweenServicesMinutes": 15,
+  "recommendedTimes": [
+    "10:00",
+    "13:30",
+    "16:00"
+  ],
+  "notRecommendedTimes": [
+    "18:30"
+  ]
+}

@@ -1,0 +1,688 @@
+/* ───────────────────────────────────────────────
+   licenses.module.css — License Center UI
+   Same premium glass style as ai-costs
+   ─────────────────────────────────────────────── */
+
+/* ── Page shell ── */
+
+.wrapper {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #f8f6ff 0%, #f0ecff 100%);
+  overflow-x: hidden;
+}
+
+.page {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 48px 64px 48px;
+  box-sizing: border-box;
+}
+
+/* ── Header ── */
+
+.header {
+  margin-bottom: 28px;
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.headerIcon {
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #7c5cff, #9b7dff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 12px 28px rgba(124,92,255,0.30);
+}
+
+.headerTitles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.headerKicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #7c5cff;
+}
+
+.headerTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.headerDesc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+  margin: 2px 0 0 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badgeDanger {
+  background: rgba(231,76,60,0.08);
+  color: #e74c3c;
+  border: 1px solid rgba(231,76,60,0.15);
+}
+
+/* ── Summary cards grid ── */
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.summaryCard {
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.70);
+  border: 1px solid rgba(124,58,237,0.06);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: box-shadow 0.2s;
+}
+
+.summaryCard:hover {
+  box-shadow: 0 4px 16px rgba(124,92,255,0.08);
+}
+
+.summaryIcon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.summaryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.summaryLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.summaryValue {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.summarySub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #94a3b8;
+}
+
+/* ── Section cards (general) ── */
+
+.sectionTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.sectionSub {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+/* ── Business grid ── */
+
+.businessGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.businessCard {
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.70);
+  border: 1px solid rgba(124,58,237,0.06);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.businessCard:hover {
+  border-color: rgba(124,92,255,0.20);
+  box-shadow: 0 4px 20px rgba(124,92,255,0.08);
+  transform: translateY(-1px);
+}
+
+.businessCardSelected {
+  border-color: #7c5cff;
+  box-shadow: 0 0 0 2px rgba(124,92,255,0.15);
+}
+
+.businessCardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.businessName {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.businessType {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  margin-top: 1px;
+}
+
+.businessCardRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #64748b;
+  gap: 8px;
+}
+
+.businessCardRow strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+/* ── Status badges ── */
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.statusActive {
+  background: rgba(16,185,129,0.10);
+  color: #10B981;
+}
+
+.statusOverdue {
+  background: rgba(245,158,11,0.10);
+  color: #f59e0b;
+}
+
+.statusBlocked {
+  background: rgba(231,76,60,0.10);
+  color: #e74c3c;
+}
+
+.statusTrial {
+  background: rgba(124,92,255,0.10);
+  color: #7c5cff;
+}
+
+.statusCancelled {
+  background: rgba(148,163,184,0.12);
+  color: #94a3b8;
+}
+
+/* ── Plan badge ── */
+
+.planBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 12px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.planBasic {
+  background: rgba(148,163,184,0.10);
+  color: #64748b;
+}
+
+.planPro {
+  background: rgba(99,102,241,0.10);
+  color: #6366f1;
+}
+
+.planPremium {
+  background: rgba(124,92,255,0.10);
+  color: #7c5cff;
+}
+
+.planEnterprise {
+  background: linear-gradient(135deg, rgba(124,92,255,0.12), rgba(251,191,36,0.08));
+  color: #7c5cff;
+  border: 1px solid rgba(251,191,36,0.15);
+}
+
+/* ── Detail panel ── */
+
+.detailOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,0.30);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.detailPanel {
+  background: #fff;
+  border-radius: 24px;
+  max-width: 780px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(15,23,42,0.15);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.detailHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.detailHeaderInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.detailBusinessName {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.detailBusinessType {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.detailClose {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid rgba(124,58,237,0.08);
+  background: rgba(255,255,255,0.80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.detailClose:hover {
+  background: rgba(231,76,60,0.08);
+}
+
+.detailSection {
+  margin-bottom: 20px;
+}
+
+.detailSectionTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 20px;
+}
+
+.detailField {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.detailFieldLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+}
+
+.detailFieldValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.detailFieldValueMonospace {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+/* ── Features grid in detail ── */
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 6px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0f172a;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.50);
+}
+
+.featureEnabled {
+  color: #10B981;
+}
+
+.featureDisabled {
+  color: #cbd5e1;
+}
+
+/* ── Action buttons ── */
+
+.actionsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.actionBtn {
+  padding: 8px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(124,58,237,0.10);
+  background: rgba(255,255,255,0.70);
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.actionBtn:hover {
+  background: rgba(124,92,255,0.06);
+  border-color: rgba(124,92,255,0.20);
+  color: #7c5cff;
+}
+
+.actionBtnDanger {
+  color: #e74c3c;
+  border-color: rgba(231,76,60,0.12);
+}
+
+.actionBtnDanger:hover {
+  background: rgba(231,76,60,0.06);
+  border-color: rgba(231,76,60,0.20);
+  color: #e74c3c;
+}
+
+.actionBtnSuccess {
+  color: #10B981;
+  border-color: rgba(16,185,129,0.12);
+}
+
+.actionBtnSuccess:hover {
+  background: rgba(16,185,129,0.06);
+  border-color: rgba(16,185,129,0.20);
+  color: #10B981;
+}
+
+/* ── Loading / Error / Gate ── */
+
+.loadingBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  font-family: 'Inter', sans-serif;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.errorBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  font-family: 'Inter', sans-serif;
+  color: #e74c3c;
+  font-size: 14px;
+  gap: 10px;
+}
+
+.gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+.gateCard {
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(124,58,237,0.08);
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 32px rgba(124,92,255,0.04);
+}
+
+.gateIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #7c5cff, #9b7dff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 12px 28px rgba(124,92,255,0.24);
+}
+
+.gateTitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 8px;
+}
+
+.gateDesc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #64748b;
+  margin: 0 0 24px;
+}
+
+.gateInput {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(124,58,237,0.12);
+  background: rgba(255,255,255,0.80);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  margin-bottom: 12px;
+}
+
+.gateInput:focus {
+  border-color: #7c5cff;
+}
+
+.gateButton {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #7c5cff, #9b7dff);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gateButton:hover {
+  opacity: 0.92;
+}
+
+.gateError {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #e74c3c;
+  margin-top: 12px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .page {
+    padding: 24px 16px 48px;
+  }
+  .summaryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .businessGrid {
+    grid-template-columns: 1fr;
+  }
+  .detailPanel {
+    padding: 24px 18px;
+  }
+  .detailGrid {
+    grid-template-columns: 1fr;
+  }
+}

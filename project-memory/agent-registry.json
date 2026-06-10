@@ -1,0 +1,51 @@
+{
+  "registryVersion": "0.5.5",
+  "lastUpdated": "2026-05-30T02:16:00Z",
+  "agents": [
+    { "name": "AgentRegistry", "status": "created", "category": "system" },
+    { "name": "AgentInspector", "status": "created", "category": "system" },
+    { "name": "CuratorAgent", "status": "created", "category": "system" },
+    { "name": "RecoveryAgent", "status": "created", "category": "system" },
+    { "name": "HealthCheckAgent", "status": "created", "category": "system" },
+    { "name": "AgentLifecycleAgent", "status": "created", "category": "system" },
+    { "name": "EmotionalSalonOrchestrator", "status": "created", "category": "skill" },
+    { "name": "HomeOrchestratorAgent", "status": "created", "category": "home", "phase": 2.2, "dependsOn": [], "description": "Coordinate Home dashboard — single entry point for Home UI" },
+    { "name": "HomeDataSourceAgent", "status": "created", "category": "home", "phase": 2.2, "dependsOn": [], "description": "Map Home widgets to data sources — metadata only" },
+    { "name": "HomeInspectorAgent", "status": "created", "category": "home", "phase": 2.2, "dependsOn": ["HomeDataSourceAgent"], "description": "Inspect Home widgets and detect problems" },
+    { "name": "HomeHealthCheckAgent", "status": "created", "category": "home", "phase": 2.2, "dependsOn": ["HomeInspectorAgent"], "description": "Check if Home section is stable and ready" },
+    { "name": "HomeLearningAgent", "status": "created", "category": "home", "phase": 2.2, "dependsOn": [], "description": "Prepare Home data for Emotional Salon Intelligence" },
+    { "name": "HomeMetricsAgent", "status": "active", "category": "home", "phase": "C-1", "dependsOn": ["HomeDataSourceAgent", "AppointmentRepository"], "description": "Calculate real KPI values from appointment data — W7 connected" },
+    { "name": "HomeAIInsightAgent", "status": "active", "category": "home", "phase": "C-2/D-6", "dependsOn": ["ClientRepository", "AppointmentRepository"], "description": "Generate real AI insights for dossier sections — W8, W9, W10, W12, W13, W14 connected" },
+    { "name": "ReceptionOrchestratorAgent", "status": "planned", "category": "messages" },
+    { "name": "ConversationInspectorAgent", "status": "planned", "category": "messages" },
+    { "name": "IntentDetectionAgent", "status": "planned", "category": "messages" },
+    { "name": "DraftResponseAgent", "status": "planned", "category": "messages" },
+    { "name": "MetaReplyGuardAgent", "status": "planned", "category": "messages" },
+    { "name": "ConversationMemoryAgent", "status": "planned", "category": "messages" },
+    { "name": "CampaignOrchestratorAgent", "status": "planned", "category": "campaigns" },
+    { "name": "AudienceAgent", "status": "planned", "category": "campaigns" },
+    { "name": "TemplateValidationAgent", "status": "planned", "category": "campaigns" },
+    { "name": "CampaignComplianceAgent", "status": "planned", "category": "campaigns" },
+    { "name": "DeliveryMonitorAgent", "status": "planned", "category": "campaigns" },
+    { "name": "CampaignLearningAgent", "status": "planned", "category": "campaigns" },
+    { "name": "IntelligenceOrchestratorAgent", "status": "planned", "category": "intelligence" },
+    { "name": "ClientProfileAgent", "status": "planned", "category": "intelligence" },
+    { "name": "PreferenceMiningAgent", "status": "planned", "category": "intelligence" },
+    { "name": "OpportunityDetectionAgent", "status": "planned", "category": "intelligence" },
+    { "name": "SalonTrendsAgent", "status": "planned", "category": "intelligence" }
+  ],
+  "categories": {
+    "system": { "description": "Core system infrastructure agents", "count": 6 },
+    "skill": { "description": "Master coordination skills", "count": 1 },
+    "home": { "description": "Home dashboard agents", "count": 7 },
+    "messages": { "description": "Messages/Reception agents", "count": 6 },
+    "campaigns": { "description": "Campaign management agents", "count": 6 },
+    "intelligence": { "description": "Intelligence and learning agents", "count": 5 }
+  },
+  "summary": {
+    "totalAgents": 31,
+    "created": 12,
+    "active": 2,
+    "planned": 17
+  }
+}

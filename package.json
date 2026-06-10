@@ -1,0 +1,45 @@
+{
+  "name": "sendmestudio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test:whatsapp": "node scripts/test-whatsapp-send.js",
+    "db:generate": "prisma generate --schema=prisma/schema.prisma",
+    "db:push": "prisma db push --schema=prisma/schema.prisma --accept-data-loss",
+    "db:studio": "prisma studio --schema=prisma/schema.prisma",
+    "db:seed": "npx tsx scripts/seed.ts",
+    "db:migrate": "prisma migrate dev --schema=prisma/schema.prisma",
+    "db:setup": "prisma generate --schema=prisma/schema.prisma && prisma db push --schema=prisma/schema.prisma --accept-data-loss && npx tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.0.0",
+    "@supabase/ssr": "^0.6.0",
+    "@supabase/supabase-js": "^2.49.0",
+    "framer-motion": "^12.39.0",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^1.16.0",
+    "next": "16.2.6",
+    "playwright": "^1.60.0",
+    "react": "19.2.4",
+    "react-day-picker": "^10.0.1",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv": "^16.4.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "jest": "^30.4.2",
+    "prisma": "^6.0.0",
+    "ts-jest": "^29.4.11",
+    "tsx": "^4.19.0",
+    "typescript": "^5"
+  }
+}

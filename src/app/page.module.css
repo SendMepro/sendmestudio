@@ -1,0 +1,2362 @@
+.page {
+  height: 100dvh;
+  overflow: visible;
+  display: grid;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(124, 92, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 12% 88%, rgba(198, 163, 109, 0.08), transparent 28%),
+    linear-gradient(135deg, #fbfaff 0%, #ffffff 42%, #f3efff 100%);
+}
+
+.page,
+.page * {
+  box-sizing: border-box;
+  font-family: Inter, "SF Pro Display", system-ui, sans-serif;
+}
+
+.page ::-webkit-scrollbar,
+.sidebarNav::-webkit-scrollbar,
+.flowScroll::-webkit-scrollbar,
+.mainScroll::-webkit-scrollbar,
+.clientScroll::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.intelligenceShell {
+  height: 100dvh;
+  min-height: 0;
+  overflow: visible;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.intelligenceContent {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 320px;
+  gap: 18px;
+  padding: 0 24px 24px;
+}
+
+.flowColumn,
+.centerColumn,
+.dossierColumn {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.flowColumn,
+.dossierColumn,
+.salonHero,
+.clientFocusCard,
+.metricCard,
+.intelligenceCard,
+.signalCard,
+.dossierCard,
+.flowCard {
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(35, 30, 60, 0.08);
+  box-shadow:
+    0 24px 70px rgba(40, 30, 80, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(1.12);
+  -webkit-backdrop-filter: blur(24px) saturate(1.12);
+}
+
+.flowColumn,
+.dossierColumn {
+  border-radius: 30px;
+  padding: 20px 18px 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  height: calc(100% - 24px);
+}
+
+.centerColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.flowScroll,
+.mainScroll,
+.clientScroll {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding-bottom: max(72px, env(safe-area-inset-bottom));
+}
+
+.columnHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+}
+
+.compactHeader {
+  padding-bottom: 6px;
+}
+
+.sectionKicker,
+.headerKicker,
+.metricLabel,
+.signalKicker,
+.dossierLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: rgba(96, 88, 118, 0.56);
+  overflow-wrap: normal;
+}
+
+.sectionTitle {
+  margin: 8px 0 0;
+  font-size: 18px;
+  line-height: 1.18;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: rgba(20, 18, 28, 0.92);
+}
+
+.flowList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.flowCard {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  min-height: 182px;
+  padding: 18px 14px 18px 80px;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 23% 30%, rgba(218, 204, 255, 0.44), transparent 28%),
+    radial-gradient(circle at 84% 92%, rgba(248, 214, 152, 0.22), transparent 32%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(252, 249, 255, 0.82));
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 26px 68px rgba(116, 96, 170, 0.16),
+    inset 0 0 0 1px rgba(235, 228, 255, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.96);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+
+.flowCard[data-selected="true"] {
+  transform: translateY(-1px);
+  background:
+    radial-gradient(circle at 20% 16%, rgba(216, 200, 255, 0.34), transparent 32%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(250, 245, 255, 0.78));
+  border: 1px solid rgba(216, 200, 255, 0.72);
+  box-shadow:
+    0 24px 62px rgba(124, 92, 255, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.94);
+}
+
+.flowCard[data-selected="true"]::after {
+  background: #7c5cff;
+}
+
+.flowAvatar {
+  position: absolute;
+  left: 10px;
+  top: 18px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(124, 92, 255, 0.14), rgba(217, 182, 111, 0.18)),
+    rgba(255, 255, 255, 0.82);
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  color: rgba(72, 58, 103, 0.86);
+  font-family: Georgia, "Times New Roman", var(--font-display), serif;
+  font-size: 18px;
+  font-weight: 720;
+  letter-spacing: 0;
+  box-shadow:
+    0 0 0 1px rgba(216, 200, 255, 0.7),
+    0 16px 34px rgba(124, 92, 255, 0.10);
+  z-index: 2;
+}
+
+.flowContent {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  text-align: left;
+  padding-right: 68px;
+}
+
+.flowName {
+  position: absolute;
+  left: 80px;
+  right: 68px;
+  top: 36px;
+  margin: 0;
+  text-align: left;
+  font-family: Montserrat, Inter, var(--font-ui), system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(20, 18, 28, 0.92);
+}
+
+.flowCard[data-selected="true"] .flowName {
+  color: rgba(20, 18, 28, 0.96);
+}
+
+.flowMetaLine {
+  min-width: 0;
+  display: contents;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(70, 64, 84, 0.72);
+}
+
+.flowMetaLine > span:not(.flowTime):not(.flowServiceText) {
+  display: none;
+}
+
+.flowTime {
+  position: absolute;
+  left: 11px;
+  top: 47px;
+  width: 56px;
+  height: 115px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 38px 0 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1;
+  color: rgba(157, 98, 19, 0.96);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 241, 224, 0.72));
+  border: 1px solid rgba(245, 224, 198, 0.86);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 14px 28px rgba(184, 132, 58, 0.08);
+}
+
+.flowTimeIcon {
+  color: rgba(157, 98, 19, 0.72);
+}
+
+.flowServiceText {
+  position: absolute;
+  left: 80px;
+  right: 14px;
+  top: 62px;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  max-width: none;
+  margin-top: 0;
+  padding: 0 10px;
+  border-radius: 999px 0 0 999px;
+  background: rgba(255, 251, 246, 0.78);
+  border: none;
+  color: rgba(128, 79, 19, 0.92);
+  box-shadow: none;
+  font-size: 10px;
+  font-weight: 550;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, black 85%, transparent 100%);
+}
+
+.flowServiceIcon {
+  flex-shrink: 0;
+  color: rgba(157, 98, 19, 0.62);
+}
+
+.flowMeta {
+  position: absolute;
+  left: 80px;
+  top: 94px;
+  margin-top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(32, 28, 42, 0.78);
+}
+
+.flowStylistInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.flowStylistLabel {
+  display: block;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(124, 92, 255, 0.62);
+  line-height: 1;
+}
+
+.flowStylistInfo > span:first-child {
+  font-size: 13px;
+  font-weight: 550;
+  color: rgba(32, 28, 42, 0.82);
+}
+
+.stylistAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: 0 0 32px;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 0 0 1px rgba(124, 92, 255, 0.16),
+    0 8px 18px rgba(40, 30, 80, 0.12);
+}
+
+.flowStageIconInline {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
+  cursor: help;
+  transition: all 0.2s ease;
+  color: rgba(157, 98, 19, 0.72);
+}
+
+.flowStageIconInline:hover {
+  transform: scale(1.12);
+}
+
+/* Tooltip text styling for inline stage icon */
+.flowStageIconInline .tooltipText {
+  visibility: hidden;
+  width: 140px;
+  background-color: rgba(30, 26, 45, 0.95);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  z-index: 15;
+  bottom: 48px; /* Position above the icon and clear stylist avatar */
+  left: 0;
+  margin-left: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 11px;
+  font-weight: 500;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.flowStageIconInline .tooltipText::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 23px; /* Align arrow with center of the 56px time chip */
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(30, 26, 45, 0.95) transparent transparent transparent;
+}
+
+.flowStageIconInline:hover .tooltipText {
+  visibility: visible;
+  opacity: 1;
+}
+
+.flowPills {
+  position: absolute;
+  left: 80px;
+  top: 134px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.flowStatus {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-top: 0;
+  padding: 0 11px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+  white-space: nowrap;
+  background: rgba(240, 236, 252, 0.92);
+  color: rgba(110, 100, 142, 0.78);
+}
+
+.flowStatus::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.flowStatus[data-tone="current"] {
+  background: rgba(124, 92, 255, 0.14);
+  color: #7c5cff;
+}
+
+.flowStatus[data-tone="done"] {
+  background: rgba(87, 199, 133, 0.12);
+  color: rgba(76, 145, 96, 0.9);
+}
+
+.flowStatus[data-tone="delayed"] {
+  background: rgba(214, 174, 100, 0.14);
+  color: rgba(151, 111, 42, 0.92);
+}
+
+.flowStatus[data-tone="cancelled"] {
+  background: rgba(214, 132, 132, 0.14);
+  color: rgba(154, 79, 79, 0.92);
+}
+
+/* Phase 2.8: Mock/Live badges for W4 appointment cards */
+.flowBadgeMock,
+.flowBadgeLive {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.flowBadgeMock {
+  background: rgba(255, 200, 55, 0.18);
+  color: rgba(170, 120, 10, 0.95);
+  border: 1px solid rgba(255, 200, 55, 0.30);
+}
+
+.flowBadgeLive {
+  background: rgba(75, 200, 120, 0.15);
+  color: rgba(30, 130, 70, 0.92);
+  border: 1px solid rgba(75, 200, 120, 0.28);
+}
+
+.flowTrack,
+.flowDot,
+.flowLine,
+.flowService {
+  display: none;
+}
+
+.salonHero {
+  min-height: 142px;
+  border-radius: 0 0 28px 28px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border-top: none;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/img/bg_salon02.webp") center/cover;
+}
+
+.salonHeroOverlay {
+  min-height: inherit;
+  padding: 22px 26px 22px 0;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: -16px;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(217, 182, 111, 0.22), transparent 32%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.salonLogo {
+  max-width: 228px;
+  max-height: 84px;
+  width: min(228px, 42%);
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(20, 18, 28, 0.28));
+}
+
+.heroEyebrow {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.salonHero p {
+  max-width: 320px;
+  margin: 7px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--font-sans), Inter, system-ui, sans-serif;
+  font-size: clamp(21px, 2vw, 28px);
+  font-weight: 500;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 0 20px;
+  border-bottom: 1px solid rgba(124, 92, 255, 0.08);
+}
+
+.headerLeft {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerRightInfo {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(124, 92, 255, 0.08);
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 24px rgba(124, 92, 255, 0.04);
+  white-space: nowrap;
+  margin-top: 5px;
+}
+
+.weatherWidget {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(72, 58, 103, 0.82);
+}
+
+.weatherWidget svg {
+  color: #d9b66f;
+}
+
+.headerDateTime {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(70, 64, 84, 0.68);
+}
+
+.headerDateTimeDivider {
+  color: rgba(124, 92, 255, 0.16);
+  font-weight: 300;
+}
+
+.headerTitle {
+  margin: 10px 0 0;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: rgba(60, 54, 80, 0.82);
+  white-space: nowrap;
+}
+
+.headerSubtitle {
+  margin: 8px 0 0;
+  width: 100%;
+  max-width: none;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(70, 64, 84, 0.72);
+}
+
+.datePill {
+  margin-top: 10px;
+  min-height: 26px;
+  min-width: fit-content;
+  padding: 0 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 10px;
+  line-height: 1;
+  color: rgba(70, 64, 84, 0.68);
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(35, 30, 60, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+.clientFocusCard {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) 130px;
+  align-items: start;
+  gap: 18px;
+  padding: 22px;
+  border-radius: 28px;
+  overflow: visible;
+  max-height: 620px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(251, 247, 255, 0.68)),
+    radial-gradient(circle at 100% 0%, rgba(124, 92, 255, 0.1), transparent 34%);
+}
+
+.clientFocusCard * {
+  min-width: 0;
+}
+
+.clientFocusLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.clientFocusPortrait {
+  width: 120px;
+  height: 120px;
+  border-radius: 24px;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(124, 92, 255, 0.16), rgba(217, 182, 111, 0.18)),
+    rgba(255, 255, 255, 0.74);
+  border: 1px solid rgba(124, 92, 255, 0.14);
+  color: rgba(72, 58, 103, 0.88);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.clientFocusBody {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-right: 18px;
+  max-width: 280px;
+}
+
+.clientFocusPriorityRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.clientFocusRepurchase {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(96, 88, 118, 0.6);
+}
+
+.clientFocusFooterRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.clientFocusTitle {
+  margin: 0;
+  max-width: 100%;
+  font-size: 22px;
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  white-space: normal;
+  color: rgba(20, 18, 28, 0.94);
+}
+
+.clientFocusService {
+  max-width: 280px;
+  font-size: 15px;
+  color: rgba(70, 64, 84, 0.76);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clientFocusMetaRow,
+.clientFocusNote,
+.clientFocusValueLabel,
+.clientFocusNoteLabel {
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(70, 64, 84, 0.72);
+}
+
+.clientFocusMetaRow {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.clientFocusTime,
+.clientFocusStylist {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  max-width: 100%;
+  flex-shrink: 0;
+  padding: 2px 8px 2px 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(35, 30, 60, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
+
+.clientFocusTime {
+  padding-left: 8px;
+  color: rgba(72, 58, 103, 0.74);
+}
+
+.clientFocusStylist span,
+.clientFocusTime span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clientFocusNoteLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: rgba(96, 88, 118, 0.56);
+}
+
+.clientFocusSummary {
+  margin-top: 6px;
+}
+
+.clientFocusValuePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  max-width: 235px;
+}
+
+.clientFocusValuePill {
+  min-height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(244, 240, 253, 0.9);
+  border: 1px solid rgba(35, 30, 60, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  line-height: 1;
+  color: rgba(55, 47, 75, 0.84);
+  white-space: nowrap;
+}
+
+/* Phase B-2: W5 safe placeholder for real clients without dossier data */
+.clientFocusValuePillEmpty {
+  background: rgba(245, 245, 247, 0.9);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.35);
+  font-style: italic;
+  font-size: 11.5px;
+}
+
+.w5PlaceholderBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 247, 235, 0.92);
+  border: 1px solid rgba(255, 193, 7, 0.35);
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(180, 120, 0, 0.85);
+  white-space: nowrap;
+  margin: 8px 0 0 16px;
+}
+
+.w5PlaceholderDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 193, 7, 0.65);
+}
+
+.reservationProgress {
+  width: 180px;
+  display: grid;
+  gap: 6px;
+}
+
+.reservationProgressMeta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  color: rgba(96, 88, 118, 0.58);
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.reservationProgressMeta span {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.reservationProgressMeta strong {
+  color: rgba(72, 58, 103, 0.82);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.reservationProgressTrack {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(124, 92, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.08);
+}
+
+.reservationProgressTrack span {
+  display: block;
+  height: 100%;
+  min-width: 6px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8f6bff, #d9b66f);
+  transition: width 0.4s ease;
+}
+
+.serviceGraphicImage {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  right: -150px;
+  top: -40px;
+  width: 380px;
+  height: 320px;
+  object-fit: cover;
+  object-position: right top;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  pointer-events: none;
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+/* Cuando el sidebar se expande, la imagen se desplaza a la derecha */
+:global(.app-shell:has(.shared-sidebar:hover)) .serviceGraphicImage {
+  right: -230px;
+}
+
+/* Dar más espacio al contenido eliminando la columna vacía de la derecha */
+:global(.app-shell:has(.shared-sidebar:hover)) .clientFocusCard {
+  grid-template-columns: 120px minmax(0, 1fr);
+}
+
+/* Asegurar que el contenido quede siempre visible encima de la imagen */
+:global(.app-shell:has(.shared-sidebar:hover)) .clientFocusBody,
+:global(.app-shell:has(.shared-sidebar:hover)) .clientFocusLeft {
+  z-index: 4;
+}
+
+.clientFocusNoteBox {
+  position: relative;
+  z-index: 3;
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(250, 247, 255, 0.92);
+  border: 1px solid rgba(124, 92, 255, 0.08);
+}
+
+.noteBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.clientFocusNote {
+  margin: 8px 0 0;
+}
+
+.clientFocusImpact {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #7c5cff;
+}
+
+.kpiRow {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.kpiMiniCard {
+  min-width: 0;
+  min-height: 118px;
+  overflow: visible;
+  padding: 18px;
+  border-radius: 24px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 14px;
+  row-gap: 0;
+  align-content: start;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(35, 30, 60, 0.08);
+  box-shadow:
+    0 18px 44px rgba(80, 70, 140, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+}
+
+.kpiMainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.kpiMiniCard *,
+.mainAiCard,
+.aiMiniCard,
+.aiMiniCard * {
+  min-width: 0;
+}
+
+.kpiIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: #7c5cff;
+  background: rgba(124, 92, 255, 0.08);
+  margin-bottom: 16px;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+.kpiValue {
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: rgba(20, 18, 28, 0.94);
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.kpiMeta {
+  margin-top: 4px;
+  font-size: 9px;
+  line-height: 1.3;
+  color: rgba(70, 64, 84, 0.52);
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.kpiLabel {
+  max-width: 160px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: rgba(96, 88, 118, 0.5);
+  margin-bottom: 0;
+  white-space: normal;
+  overflow-wrap: normal;
+}
+
+.platformHealthCard {
+  border-color: rgba(198, 163, 109, 0.18);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(250, 245, 255, 0.66)),
+    radial-gradient(circle at 90% 10%, rgba(198, 163, 109, 0.16), transparent 38%);
+}
+
+.platformHealthCard .kpiValue {
+  font-size: clamp(19px, 1.7vw, 24px);
+}
+
+.healthBar {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: 6px;
+  height: 5px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(124, 92, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.08);
+}
+
+.healthBar span {
+  height: 100%;
+  border-radius: inherit;
+  display: block;
+  background: linear-gradient(90deg, #8f6bff, #d9b66f);
+}
+
+.healthInsight {
+  grid-column: 2;
+  grid-row: 4;
+  margin: 2px 0 0;
+  color: rgba(70, 64, 84, 0.68);
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.aiLabel {
+  max-width: 160px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: rgba(96, 88, 118, 0.5);
+  overflow-wrap: normal;
+}
+
+.mainAiCard {
+  min-width: 0;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 28px;
+  margin-top: 14px;
+}
+
+.aiInsightGrid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.aiMiniCard {
+  min-width: 0;
+  overflow: hidden;
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.aiMiniCardTitle {
+  margin: 10px 0 0;
+  font-size: 18px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgba(20, 18, 28, 0.92);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.aiMiniCardText {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(70, 64, 84, 0.72);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.aiMiniCardAction {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
+  color: #7c5cff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Phase F — UI Integration: Insight card styles */
+.insightCardsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.insightCard {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(35, 30, 60, 0.06);
+  border-left: 3px solid #7c5cff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.insightCard:hover {
+  transform: translateX(2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 4px 12px rgba(124, 92, 255, 0.06);
+}
+
+.insightCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.insightCategoryLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(96, 88, 118, 0.65);
+}
+
+.insightPriorityBadge {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid;
+  line-height: 1.3;
+}
+
+.insightClientCount {
+  font-size: 9px;
+  color: rgba(116, 99, 135, 0.5);
+  margin-left: auto;
+}
+
+.insightSummary {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: rgba(30, 26, 42, 0.82);
+}
+
+.insightClientList {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+
+.insightClientChip {
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(124, 92, 255, 0.05);
+  border: 1px solid rgba(124, 92, 255, 0.1);
+  color: rgba(124, 92, 255, 0.75);
+  font-size: 9px;
+  font-weight: 550;
+}
+
+.dossierCard {
+  margin-top: 14px;
+  min-width: 0;
+  overflow: visible;
+  padding: 14px;
+  border-radius: 28px;
+  display: grid;
+  gap: 12px;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(124, 92, 255, 0.1), transparent 32%),
+    rgba(255, 255, 255, 0.68);
+}
+
+.dossierProfile {
+  border-radius: 24px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  background:
+    linear-gradient(135deg, rgba(42, 31, 50, 0.9), rgba(124, 92, 255, 0.26)),
+    radial-gradient(circle at 90% 10%, rgba(217, 182, 111, 0.24), transparent 42%);
+  color: white;
+}
+
+.dossierProfile img,
+.dossierProfileAvatar {
+  width: 66px;
+  height: 66px;
+  border-radius: 22px;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 14px 34px rgba(20, 18, 28, 0.24);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(217, 182, 111, 0.22)),
+    rgba(124, 92, 255, 0.22);
+  color: white;
+  font-size: 20px;
+  font-weight: 760;
+  letter-spacing: 0;
+}
+
+.dossierProfile span,
+.nextActionCard span,
+.dossierGrid span,
+.arrivalCard span,
+.dossierRisk span {
+  display: block;
+  color: rgba(116, 99, 135, 0.58);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.dossierProfile span {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.dossierProfile h2 {
+  margin: 6px 0 2px;
+  color: white;
+  font-family: Outfit, Inter, system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.dossierProfile p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.dossierHighlight,
+.dossierRisk,
+.arrivalCard,
+.dossierAiCard,
+.nextActionCard,
+.dossierGrid > div {
+  border-radius: 20px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(35, 30, 60, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76);
+}
+
+.dossierHighlight p,
+.dossierAiCard p {
+  margin: 3px 0 0;
+  color: rgba(20, 18, 28, 0.82);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.dossierHeaderLine {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0;
+}
+
+.dossierIcon {
+  flex-shrink: 0;
+  color: rgba(96, 88, 118, 0.45); /* Soft gray icon */
+}
+
+.dossierGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.dossierGrid strong,
+.dossierRisk strong,
+.arrivalCard strong,
+.nextActionCard strong {
+  display: block;
+  margin-top: 3px;
+  color: rgba(20, 18, 28, 0.86);
+  font-size: 13px;
+  line-height: 1.38;
+  font-weight: 620;
+}
+
+.arrivalCard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border-color: rgba(124, 92, 255, 0.14);
+  background:
+    linear-gradient(135deg, rgba(124, 92, 255, 0.08), rgba(217, 182, 111, 0.08)),
+    rgba(255, 255, 255, 0.74);
+}
+
+.arrivalCard small {
+  display: block;
+  margin-top: 6px;
+  color: rgba(70, 64, 84, 0.62);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.arrivalCard button {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(124, 92, 255, 0.18);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #7c5cff;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.arrivalCard button:hover {
+  background: rgba(124, 92, 255, 0.1);
+}
+
+.dossierRisk {
+  border-color: rgba(217, 182, 111, 0.16);
+  background: rgba(255, 251, 244, 0.72);
+}
+
+.dossierAiCard {
+  position: relative;
+  padding-right: 48px;
+  border-color: rgba(124, 92, 255, 0.1);
+  background: rgba(250, 247, 255, 0.82);
+}
+
+.dossierAiBadge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.nextActionCard {
+  background:
+    linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(217, 182, 111, 0.1)),
+    rgba(255, 255, 255, 0.7);
+}
+
+.dossierValue {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: rgba(20, 18, 28, 0.84);
+}
+
+@media (max-width: 1320px) {
+  .kpiRow {
+    grid-template-columns: 1fr;
+  }
+
+  .kpiMiniCard {
+    min-height: 96px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .intelligenceContent {
+    grid-template-columns: 320px minmax(0, 1fr);
+  }
+
+  .kpiRow {
+    grid-template-columns: 1fr;
+  }
+
+  .dossierColumn {
+    display: none;
+  }
+}
+
+@media (max-width: 1400px) {
+  .aiInsightGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .page {
+    overflow: auto;
+  }
+
+  .intelligenceShell {
+    height: auto;
+    min-height: 100dvh;
+    grid-template-columns: 1fr;
+  }
+
+  .intelligenceContent {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .flowColumn,
+  .centerColumn,
+  .dossierColumn {
+    height: auto;
+  }
+
+  .flowScroll,
+  .mainScroll,
+  .clientScroll {
+    height: auto;
+    overflow: visible;
+    padding-bottom: 24px;
+  }
+
+  .clientFocusCard {
+    grid-template-columns: 120px 1fr;
+  }
+
+  /* En responsive, la imagen ya está en su posición por defecto */
+
+  .aiInsightGrid,
+  .kpiRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.headerFeedItem {
+  animation: feedFadeIn 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes feedFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- PREMIUM CLIENT INTELLIGENCE DOSSIER UPGRADE --- */
+
+.noiseBg {
+  position: relative;
+}
+
+.noiseBg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.038;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* 1. HERO CLIENT CARD */
+.dossierHeroCard {
+  border-radius: 28px;
+  overflow: hidden;
+  position: relative;
+  min-height: 120px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(246, 241, 255, 0.72) 0%, rgba(255, 251, 246, 0.72) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.16);
+  box-shadow: 
+    0 16px 40px rgba(124, 92, 255, 0.08), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  margin-bottom: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dossierHeroCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 48px rgba(124, 92, 255, 0.12), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.dossierHeroBlurBg {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.22) 0%, transparent 70%);
+  filter: blur(15px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dossierHeroContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.dossierHeroAvatarWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dossierHeroAvatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(217, 182, 111, 0.22));
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: rgba(72, 58, 103, 0.88);
+  font-family: Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(124, 92, 255, 0.12);
+  z-index: 2;
+}
+
+.dossierHeroGlowRing {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 92, 255, 0.3);
+  opacity: 0.8;
+  animation: breathingGlow 5s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes breathingGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+    border-color: rgba(124, 92, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+    border-color: rgba(217, 182, 111, 0.5);
+  }
+}
+
+.dossierHeroMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.dossierHeroKicker {
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(124, 92, 255, 0.68);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.dossierHeroName {
+  margin: 0 0 2px 0;
+  font-family: Outfit, Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: rgba(30, 26, 42, 0.95);
+  line-height: 1.1;
+}
+
+.dossierHeroService {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  color: rgba(70, 64, 84, 0.74);
+  line-height: 1.2;
+}
+
+.dossierHeroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: rgba(124, 92, 255, 0.08);
+  border: 1px solid rgba(124, 92, 255, 0.16);
+  color: #7c5cff;
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.dossierHeroBadgeIcon {
+  color: rgba(124, 92, 255, 0.72);
+}
+
+/* CONTAINER AND NEW SECTIONS */
+.dossierListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+.luxuryDossierSection {
+  border-radius: 24px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(35, 30, 60, 0.06);
+  box-shadow: 
+    0 10px 30px rgba(40, 30, 80, 0.03), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.luxuryDossierSection:hover {
+  border-color: rgba(124, 92, 255, 0.14);
+  box-shadow: 
+    0 12px 36px rgba(124, 92, 255, 0.06), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.luxuryDossierTitle {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(96, 88, 118, 0.65);
+}
+
+.subLabelEn {
+  color: rgba(116, 99, 135, 0.45);
+  font-size: 8px;
+  font-weight: 500 !important;
+  text-transform: uppercase;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-top: 1px;
+}
+
+/* 2. PERFIL EMOCIONAL STYLES */
+.emotionalDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.emotionalDetailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.emotionalDetailLabel {
+  font-size: 9.5px;
+  font-weight: 650;
+  color: rgba(116, 99, 135, 0.52);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.emotionalDetailValue {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(30, 26, 42, 0.88);
+  line-height: 1.4;
+}
+
+.emotionalBarGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 12px;
+  border-top: 1px dashed rgba(124, 92, 255, 0.1);
+  padding-top: 12px;
+}
+
+.emotionalBarItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.emotionalBarMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.emotionalBarMeta span {
+  color: rgba(96, 88, 118, 0.62);
+  font-size: 10px;
+}
+
+.emotionalBarMeta strong {
+  color: rgba(30, 26, 42, 0.84);
+  font-weight: 600;
+}
+
+.luxuryProgressTrack {
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(124, 92, 255, 0.08);
+  overflow: hidden;
+  box-shadow: inset 0 0.5px 1px rgba(0, 0, 0, 0.03);
+}
+
+.luxuryProgressBar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #b39dff, #e9d2a6);
+}
+
+/* 3. MATERIAL INTELLIGENCE STYLES */
+.materialMetricsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.materialMetricCard {
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 251, 246, 0.6);
+  border: 1px solid rgba(217, 182, 111, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.materialMetricCard span {
+  font-size: 8.5px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: rgba(157, 98, 19, 0.55);
+  letter-spacing: 0.05em;
+}
+
+.materialMetricCard strong {
+  font-size: 15px;
+  color: rgba(30, 26, 42, 0.9);
+  font-weight: 650;
+}
+
+.goldenHighlight {
+  color: #8c6a23 !important;
+}
+
+.materialTextDetail {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px dashed rgba(217, 182, 111, 0.14);
+  padding-top: 12px;
+  text-align: left;
+}
+
+.materialDetailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.materialRowLabel {
+  color: rgba(96, 88, 118, 0.58);
+  font-size: 11px;
+}
+
+.materialRowValue {
+  color: rgba(30, 26, 42, 0.88);
+  font-weight: 550;
+}
+
+.brandsChips {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.brandChip {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(124, 92, 255, 0.05);
+  border: 1px solid rgba(124, 92, 255, 0.1);
+  color: rgba(124, 92, 255, 0.88);
+  font-size: 9.5px;
+  font-weight: 550;
+}
+
+/* 4. CUSTOMER LIFETIME VALUE STYLES */
+.clvMetricsGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.clvMetricCard {
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(248, 246, 255, 0.6);
+  border: 1px solid rgba(124, 92, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.clvMetricCard span {
+  font-size: 8.5px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: rgba(124, 92, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.clvMetricCard strong {
+  font-size: 14px;
+  color: rgba(30, 26, 42, 0.88);
+  font-weight: 650;
+}
+
+.clvPrimaryValue {
+  color: #7c5cff !important;
+  font-size: 15.5px !important;
+}
+
+.clvBars {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 12px;
+  border-top: 1px dashed rgba(124, 92, 255, 0.1);
+  padding-top: 12px;
+}
+
+.clvBarItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+}
+
+.clvBarMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.clvBarMeta span {
+  color: rgba(96, 88, 118, 0.62);
+  font-size: 10px;
+}
+
+.clvBarMeta strong {
+  color: rgba(30, 26, 42, 0.84);
+  font-weight: 600;
+}
+
+.luxuryProgressBarGold {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #d9b66f, #f3edd3);
+}
+
+.luxuryProgressBarPurple {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8f6bff, #d5c7ff);
+}
+
+/* COMPORTAMIENTO HORARIO UPGRADE */
+.luxuryArrivalSection {
+  border-radius: 24px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(246, 241, 255, 0.35) 0%, rgba(255, 251, 246, 0.35) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.12);
+  box-shadow: 
+    0 10px 30px rgba(124, 92, 255, 0.02), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.arrivalCardMain {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.arrivalBehaviorStrong {
+  font-size: 13.5px;
+  font-weight: 650;
+  color: rgba(30, 26, 42, 0.88);
+  line-height: 1.3;
+}
+
+.arrivalSmallText {
+  font-size: 10px;
+  color: rgba(116, 99, 135, 0.58);
+  line-height: 1.25;
+}
+
+.luxuryArrivalBtn {
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(124, 92, 255, 0.16);
+  border-radius: 99px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  color: #7c5cff;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  font-size: 11.5px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.luxuryArrivalBtn:hover {
+  background: rgba(124, 92, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+/* 5. ALERTAS IA STYLES */
+.dossierIconAlert {
+  flex-shrink: 0;
+  color: rgba(217, 126, 111, 0.8) !important;
+}
+
+.aiAlertsList {
+  margin: 10px 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.aiAlertItem {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.35;
+}
+
+.aiAlertBullet {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(217, 126, 111, 0.85);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.aiAlertItem p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(70, 64, 84, 0.84);
+}
+
+/* 6. RECOMENDACIÓN IA STYLES */
+.luxuryDossierAiCard {
+  border-radius: 24px;
+  padding: 16px 20px;
+  position: relative;
+  background: linear-gradient(135deg, rgba(250, 247, 255, 0.72) 0%, rgba(255, 255, 255, 0.82) 100%);
+  border: 1px solid rgba(124, 92, 255, 0.16);
+  box-shadow: 
+    0 12px 32px rgba(124, 92, 255, 0.04), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  text-align: left;
+}
+
+.aiRecommendationKicker {
+  margin: 10px 0 6px 0;
+  font-size: 11px;
+  font-weight: 550;
+  color: rgba(96, 88, 118, 0.65);
+}
+
+.aiRecommendationsList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.aiRecommendationItem {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  line-height: 1.35;
+}
+
+.aiRecArrow {
+  color: rgba(124, 92, 255, 0.68);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.aiRecommendationItem p {
+  margin: 0;
+  font-size: 12.5px;
+  color: rgba(30, 26, 42, 0.85);
+}
+
+/* 7. HISTORIAL TÉCNICO STYLES */
+.technicalHistoryGrid {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  text-align: left;
+}
+
+.technicalHistoryItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.technicalHistoryItem span {
+  font-size: 9px;
+  font-weight: 750;
+  color: rgba(116, 99, 135, 0.52);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.technicalHistoryItem strong {
+  font-size: 12.5px;
+  color: rgba(30, 26, 42, 0.9);
+  font-weight: 600;
+}
+
+.technicalHistoryItem p {
+  margin: 0;
+  font-size: 12.5px;
+  color: rgba(70, 64, 84, 0.8);
+}
+
+.techObservationsText {
+  color: rgba(128, 79, 19, 0.85) !important;
+  font-style: italic;
+}
+
+.bilingualStack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.luxuryTitleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+
+.techMetricsSection {
+  border-color: rgba(124, 92, 255, 0.22) !important;
+  background: linear-gradient(135deg, rgba(250, 247, 255, 0.85) 0%, rgba(255, 255, 255, 0.9) 100%) !important;
+  box-shadow: 
+    0 16px 36px rgba(124, 92, 255, 0.06), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.dossierIconTech {
+  flex-shrink: 0;
+  color: #7c5cff !important;
+}
+
+.techParamsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+  text-align: left;
+}
+
+.techParamItem {
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(124, 92, 255, 0.04);
+  border: 1px solid rgba(124, 92, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.techParamItem span {
+  font-size: 8px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: rgba(116, 99, 135, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.techParamItem strong {
+  font-size: 13px;
+  color: rgba(30, 26, 42, 0.9);
+  font-weight: 650;
+}
+
+.techReasoningBox {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(124, 92, 255, 0.08);
+  text-align: left;
+}
+
+.techReasoningBox span {
+  display: block;
+  font-size: 8px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: rgba(124, 92, 255, 0.7);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.techReasoningBox p {
+  margin: 0;
+  font-size: 11.5px;
+  color: rgba(70, 64, 84, 0.85);
+  line-height: 1.45;
+}
+
+/* Phase 2.9: W4-B Loading States — skeleton cards for appointment list */
+.flowCardSkeleton {
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+}
+
+.skeletonAvatar {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: linear-gradient(110deg, rgba(200, 190, 220, 0.25) 30%, rgba(220, 210, 245, 0.45) 50%, rgba(200, 190, 220, 0.25) 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeletonLine {
+  height: 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  background: linear-gradient(110deg, rgba(200, 190, 220, 0.20) 30%, rgba(220, 210, 245, 0.40) 50%, rgba(200, 190, 220, 0.20) 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+.skeletonLine:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ── Empty state banner ── */
+
+.emptyStateBanner {
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+  margin-bottom: 8px;
+}
+
+.emptyStateBannerInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.emptyStateIcon {
+  color: rgba(96, 88, 118, 0.3);
+  margin-bottom: 2px;
+}
+
+.emptyStateTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(20, 18, 28, 0.55);
+  letter-spacing: -0.02em;
+}
+
+.emptyStateDesc {
+  font-size: 12px;
+  color: rgba(96, 88, 118, 0.5);
+  line-height: 1.5;
+}
+
+/* ── Flow empty state ── */
+
+.flowCardEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 24px;
+}
+
+.flowCardEmptyInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  max-width: 240px;
+}
+
+.flowEmptyIcon {
+  color: rgba(96, 88, 118, 0.2);
+}
+
+.flowEmptyTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(20, 18, 28, 0.45);
+}
+
+.flowEmptyDesc {
+  font-size: 11px;
+  color: rgba(96, 88, 118, 0.45);
+  line-height: 1.4;
+}

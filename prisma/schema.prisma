@@ -1,0 +1,616 @@
+// ================================================================
+// SendMe Studio — Prisma Schema (Fase 1: Auth + Core)
+// ================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ── Tenants (negocios) ───────────────────────────────────────────
+model Tenant {
+  id             String  @id @default(uuid()) @db.Uuid
+  slug           String  @unique
+  businessName   String  @map("business_name")
+  businessType   String  @default("salon") @map("business_type")
+  ownerName      String? @map("owner_name")
+  ownerEmail     String?
+  ownerPhone     String? @map("owner_phone")
+  logoUrl        String? @map("logo_url")
+  bannerUrl      String? @map("banner_url")
+  primaryColor   String  @default("#7c5cff") @map("primary_color")
+  secondaryColor String  @default("#1a1a2e") @map("secondary_color")
+  faviconUrl     String? @map("favicon_url")
+  tagline        String? // Business subtitle, e.g. "Salon & Beauty Business"
+  timezone       String  @default("America/Santiago") @map("timezone")
+  language       String  @default("es") @map("language")
+
+  // Active / license control
+  isActive         Boolean   @default(true) @map("is_active")
+  licenseStatus    String    @default("trial") @map("license_status") // active | trial | expired | suspended | cancelled
+  licenseExpiresAt DateTime? @map("license_expires_at")
+
+  // Soft delete
+  deletedAt DateTime? @map("deleted_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  userTenants             UserTenant[]
+  subscriptions           Subscription[]
+  businessSettings        BusinessSettings?
+  customers               Customer[]
+  customerMemory          CustomerMemory[]
+  appointments            Appointment[]
+  campaigns               Campaign[]
+  whatsappMessages        WhatsAppMessage[]
+  whatsappConversations   WhatsAppConversation[]
+  whatsappTenantMappings  WhatsAppTenantMapping[]
+  whatsappAnalyticsEvents WhatsAppAnalyticsEvent[]
+  whatsappBookingContexts WhatsAppBookingContext[]
+  aiSettings              AiSettings?
+  knowledgeItems          KnowledgeItem[]
+  campaignHistory         CampaignHistory[]
+  audiences               Audience[]
+  files                   File[]
+  inventoryItems          InventoryItem[]
+  inventoryMovements      InventoryMovement[]
+  productSales            ProductSale[]
+  commissionRecords       CommissionRecord[]
+  templateId              String?                  @map("template_id")
+  templateVersion         String?                  @map("template_version")
+  tenantConfigBackups     TenantConfigBackup[]
+
+  @@map("tenants")
+}
+
+// ── Users (personas) ──────────────────────────────────────────────
+model User {
+  id                 String   @id @default(uuid()) @db.Uuid
+  supabaseId         String?  @unique @map("supabase_id") @db.Uuid
+  email              String   @unique
+  name               String?
+  phone              String?
+  avatarUrl          String?  @map("avatar_url")
+  isSuperAdmin       Boolean  @default(false) @map("is_super_admin")
+  isActive           Boolean  @default(true) @map("is_active")
+  mustChangePassword Boolean  @default(false) @map("must_change_password")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  userTenants UserTenant[]
+
+  @@map("users")
+}
+
+// ── User-Tenant relationship (N:N with role) ──────────────────────
+model UserTenant {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @map("user_id") @db.Uuid
+  tenantId  String    @map("tenant_id") @db.Uuid
+  role      String    @default("owner") // owner | admin | staff | viewer
+  isActive  Boolean   @default(true) @map("is_active")
+  invitedAt DateTime? @map("invited_at")
+  joinedAt  DateTime? @map("joined_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tenantId])
+  @@map("user_tenants")
+}
+
+// ── Plans (catálogo de suscripciones) ────────────────────────────
+model Plan {
+  id              String   @id @default(uuid()) @db.Uuid
+  name            String // basic | pro | premium | enterprise
+  monthlyPriceClp Int      @map("monthly_price_clp")
+  features        Json     @default("{}")
+  limits          Json     @default("{}")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  subscriptions Subscription[]
+
+  @@map("plans")
+}
+
+// ── Subscriptions (suscripción de un tenant a un plan) ──────────
+model Subscription {
+  id               String    @id @default(uuid()) @db.Uuid
+  tenantId         String    @map("tenant_id") @db.Uuid
+  planId           String    @map("plan_id") @db.Uuid
+  status           String    @default("active") // active | overdue | blocked | trial | cancelled
+  paymentStatus    String    @default("paid") @map("payment_status") // paid | pending | overdue | failed
+  startDate        DateTime  @default(now()) @map("start_date")
+  nextBilling      DateTime? @map("next_billing")
+  currentPeriodEnd DateTime? @map("current_period_end")
+  cancelledAt      DateTime? @map("cancelled_at")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  plan   Plan   @relation(fields: [planId], references: [id])
+
+  @@map("subscriptions")
+}
+
+// ── Business Settings (configuración visual y operativa del negocio) ──
+model BusinessSettings {
+  id                   String   @id @default(uuid()) @db.Uuid
+  tenantId             String   @unique @map("tenant_id") @db.Uuid
+  businessHours        Json     @default("{}") @map("business_hours")
+  services             Json     @default("[]") // default services array
+  stylists             Json     @default("[]")
+  holidays             Json     @default("[]") @map("holidays")
+  lunchBreak           String?  @map("lunch_break")
+  lastAcceptedTime     String?  @map("last_accepted_time")
+  minimumBufferMinutes Int?     @default(15) @map("minimum_buffer_minutes")
+  latePolicy           String?  @map("late_policy")
+  brandTone            String?  @map("brand_tone")
+  shortDescription     String?  @map("short_description")
+  mainPromise          String?  @map("main_promise")
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@map("business_settings")
+}
+
+// ── Customers (clientes del negocio) ─────────────────────────────
+model Customer {
+  id                 String   @id @default(uuid()) @db.Uuid
+  tenantId           String   @map("tenant_id") @db.Uuid
+  phone              String
+  displayName        String?  @map("display_name")
+  firstName          String?  @map("first_name")
+  tags               Json     @default("[]")
+  interests          Json     @default("[]")
+  requestedServices  Json     @default("[]") @map("requested_services")
+  lastVisit          String?  @map("last_visit")
+  lastConversationAt String?  @map("last_conversation_at")
+  preferredStylist   String?  @map("preferred_stylist")
+  favoriteServices   Json     @default("[]") @map("favorite_services")
+  uploadedAssets     Json     @default("[]") @map("uploaded_assets")
+  campaignEligible   Boolean  @default(false) @map("campaign_eligible")
+  consentWhatsapp    Boolean? @map("consent_whatsapp")
+  notes              String?  @default("")
+  aiSummary          String?  @map("ai_summary")
+  lifecycleStage     String?  @default("new") @map("lifecycle_stage")
+  serviceHistory     Json     @default("[]") @map("service_history")
+  avatarManualUrl    String?  @map("avatar_manual_url")
+  avatarWhatsappUrl  String?  @map("avatar_whatsapp_url")
+  avatarSource       String?  @map("avatar_source")
+  lastAvatarSync     String?  @map("last_avatar_sync")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, phone])
+  @@map("customers")
+}
+
+// ── Appointments (citas) ─────────────────────────────────────────
+model Appointment {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  customerName    String   @map("customer_name")
+  customerPhone   String   @map("customer_phone")
+  service         String
+  serviceId       String?  @map("service_id")
+  durationMinutes Int?     @map("duration_minutes")
+  stylist         String
+  stylistId       String?  @map("stylist_id")
+  date            String
+  time            String
+  endTime         String?  @map("end_time")
+  slotId          String?  @map("slot_id")
+  status          String   @default("confirmed") // confirmed | pending | cancelled
+  source          String   @default("manual") // inbox_booking | manual | ai | campaign
+  estimatedValue  Float?   @map("estimated_value")
+  conversationId  String?  @map("conversation_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@map("appointments")
+}
+
+// ── Campaigns (campañas) ──────────────────────────────────────────
+model Campaign {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @map("tenant_id") @db.Uuid
+  name              String
+  type              String // reactivacion | cumpleanos | promocion | recordatorio | personalizada
+  status            String   @default("draft") // draft | scheduled | running | completed
+  description       String   @default("")
+  targetCount       Int      @default(0) @map("target_count")
+  estimatedMessages Int      @default(0) @map("estimated_messages")
+  scheduledDate     String?  @map("scheduled_date")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@map("campaigns")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// WHATSAPP MULTI-TENANT — Fase 1: Infraestructura Prisma
+// ═══════════════════════════════════════════════════════════════
+
+// ── WhatsApp Messages (mensajes entrantes/salientes) ─────────────
+model WhatsAppMessage {
+  id             String   @id @default(uuid()) @db.Uuid
+  tenantId       String   @map("tenant_id") @db.Uuid
+  conversationId String   @map("conversation_id")
+  phone          String
+  senderName     String   @map("sender_name")
+  direction      String // inbound | outbound
+  type           String // text | image | audio | video | document | reaction
+  content        String   @default("")
+  mediaUrl       String?  @map("media_url")
+  mediaId        String?  @map("media_id")
+  timestamp      String
+  status         String   @default("received") // received | sending | sent | delivered | read | failed
+  seen           Boolean  @default(false)
+  waMessageId    String?  @map("wa_message_id")
+  metadata       Json?    @default("{}")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  tenant       Tenant                @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  conversation WhatsAppConversation? @relation(fields: [tenantId, conversationId], references: [tenantId, id])
+
+  @@index([tenantId, conversationId])
+  @@index([tenantId, phone])
+  @@index([tenantId, timestamp])
+  @@index([tenantId, status])
+  @@map("whatsapp_messages")
+}
+
+// ── WhatsApp Tenant Mapping — resuelve phone_number_id → tenantId ─
+model WhatsAppTenantMapping {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @unique @map("tenant_id") @db.Uuid
+  phoneNumberId String   @unique @map("phone_number_id")
+  businessPhone String?  @map("business_phone")
+  waBusinessId  String?  @map("wa_business_id")
+  accessToken   String?  @map("access_token") // Encriptar en producción
+  webhookSecret String?  @map("webhook_secret") // verify_token
+  isActive      Boolean  @default(true) @map("is_active")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@map("whatsapp_tenant_mappings")
+}
+
+// ── WhatsApp Conversations — hilo por tenant + phone ──────────────
+model WhatsAppConversation {
+  id               String   @id @default(uuid())
+  tenantId         String   @map("tenant_id") @db.Uuid
+  phone            String
+  displayName      String?  @map("display_name")
+  autoReplyEnabled Boolean  @default(true) @map("auto_reply_enabled")
+  aiMode           String   @default("automatic") @map("ai_mode") // manual | automatic | scheduled
+  unreadCount      Int      @default(0) @map("unread_count")
+  lastActivityAt   DateTime @map("last_activity_at")
+  metadata         Json     @default("{}")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  tenant   Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  messages WhatsAppMessage[]
+
+  @@unique([tenantId, phone])
+  @@unique([tenantId, id])
+  @@index([tenantId, lastActivityAt])
+  @@map("whatsapp_conversations")
+}
+
+// ── WhatsApp Analytics Events — eventos tenant-aware ──────────────
+model WhatsAppAnalyticsEvent {
+  id             String   @id @default(uuid()) @db.Uuid
+  tenantId       String   @map("tenant_id") @db.Uuid
+  conversationId String?  @map("conversation_id")
+  type           String // intent_detected | message_received | ai_reply | booking_made | etc.
+  metadata       Json     @default("{}")
+  timestamp      DateTime @default(now()) @map("timestamp")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, timestamp])
+  @@index([tenantId, type, timestamp])
+  @@map("whatsapp_analytics_events")
+}
+
+// ── WhatsApp Booking Context — estado de reserva por conversación ─
+model WhatsAppBookingContext {
+  id              String    @id @default(uuid()) @db.Uuid
+  tenantId        String    @map("tenant_id") @db.Uuid
+  conversationId  String    @unique @map("conversation_id")
+  phone           String
+  stage           String    @default("initial") // initial | service | date | time | confirm | complete
+  service         String?
+  date            String?
+  time            String?
+  stylist         String?
+  slotSuggestions Json?     @map("slot_suggestions")
+  metadata        Json      @default("{}")
+  expiresAt       DateTime? @map("expires_at")
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, phone])
+  @@index([tenantId, conversationId])
+  @@map("whatsapp_booking_contexts")
+}
+
+// ── AI Settings (configuración de IA por tenant) ─────────────────
+model AiSettings {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @unique @map("tenant_id") @db.Uuid
+  autoReplyEnabled  Boolean  @default(true) @map("auto_reply_enabled")
+  aiMode            String   @default("automatic") @map("ai_mode") // manual | automatic | scheduled | inherit
+  aiRules           Json     @default("[]") @map("ai_rules")
+  supportFeedRules  Json     @default("[]") @map("support_feed_rules")
+  bookingRules      Json     @default("[]") @map("booking_rules")
+  availabilityRules Json     @default("[]") @map("availability_rules")
+  monthlyAiRequests Int      @default(0) @map("monthly_ai_requests")
+  monthlyAiBudget   Float?   @map("monthly_ai_budget")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@map("ai_settings")
+}
+
+// ── Knowledge Items (FAQ, contenido de conocimiento por tenant) ──
+model KnowledgeItem {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  section   String // salonProfile | businessHours | services | stylists | faqs | mediaLibrary
+  key       String? // identifier within section
+  data      Json     @default("{}")
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, section])
+  @@map("knowledge_items")
+}
+
+// ── Customer Memory (memoria de clientes para IA) ────────────────
+model CustomerMemory {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  phone     String
+  profile   Json     @default("{}")
+  signals   Json     @default("[]")
+  metadata  Json     @default("{}")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@unique([tenantId, phone])
+  @@map("customer_memory")
+}
+
+// ── Campaign History (historial de ejecución de campañas) ─────────
+model CampaignHistory {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  campaignId   String?  @map("campaign_id")
+  campaignName String   @map("campaign_name")
+  campaignType String   @map("campaign_type")
+  action       String // sent | delivered | read | replied | booked | cancelled
+  phone        String?
+  customerName String?  @map("customer_name")
+  metadata     Json     @default("{}")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, campaignId])
+  @@map("campaign_history")
+}
+
+// ── Audience (listas de contactos para campañas) ────────────────────
+model Audience {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  name            String
+  source          String   @default("csv") // csv | xlsx | manual
+  contacts        Json     @default("[]")
+  totalContacts   Int      @default(0) @map("total_contacts")
+  validWhatsapp   Int      @default(0) @map("valid_whatsapp")
+  invalidWhatsapp Int      @default(0) @map("invalid_whatsapp")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId])
+  @@map("audiences")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BUSINESS CENTER — Fase 10: Multi-Tenant
+// ═══════════════════════════════════════════════════════════════
+
+// ── Inventory Items (productos en inventario) ─────────────────────
+model InventoryItem {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  sku          String
+  name         String
+  brand        String
+  category     String
+  stock        Int      @default(0)
+  minimumStock Int      @default(0) @map("minimum_stock")
+  cost         Float    @default(0)
+  salePrice    Float    @map("sale_price")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  tenant    Tenant              @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  movements InventoryMovement[]
+  sales     ProductSale[]
+
+  @@unique([tenantId, sku])
+  @@index([tenantId, active])
+  @@map("inventory_items")
+}
+
+// ── Inventory Movements (movimientos de stock) ────────────────────
+model InventoryMovement {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  productId   String   @map("product_id") @db.Uuid
+  type        String // purchase | sale | stylist_delivery | adjustment | loss | return
+  quantity    Int
+  performedBy String   @map("performed_by")
+  timestamp   DateTime
+  notes       String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  tenant  Tenant        @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  product InventoryItem @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, productId])
+  @@index([tenantId, type])
+  @@map("inventory_movements")
+}
+
+// ── Product Sales (ventas de productos) ───────────────────────────
+model ProductSale {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @map("tenant_id") @db.Uuid
+  productId         String   @map("product_id") @db.Uuid
+  clientId          String   @map("client_id")
+  stylistId         String   @map("stylist_id")
+  salePrice         Float    @map("sale_price")
+  commissionPercent Float    @default(0.07) @map("commission_percent")
+  commissionAmount  Float    @map("commission_amount")
+  timestamp         DateTime
+  createdAt         DateTime @default(now()) @map("created_at")
+
+  tenant      Tenant             @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  product     InventoryItem      @relation(fields: [productId], references: [id])
+  commissions CommissionRecord[]
+
+  @@index([tenantId, timestamp])
+  @@index([tenantId, stylistId])
+  @@map("product_sales")
+}
+
+// ── Commission Records (comisiones generadas) ─────────────────────
+model CommissionRecord {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  stylistId String   @map("stylist_id")
+  saleId    String   @map("sale_id") @db.Uuid
+  amount    Float
+  status    String   @default("pending") // pending | paid
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  tenant Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  sale   ProductSale @relation(fields: [saleId], references: [id])
+
+  @@index([tenantId, stylistId])
+  @@index([tenantId, status])
+  @@map("commission_records")
+}
+
+// ── Files (archivos subidos por el negocio) ──────────────────────
+model File {
+  id         String   @id @default(uuid()) @db.Uuid
+  tenantId   String   @map("tenant_id") @db.Uuid
+  fileName   String   @map("file_name")
+  fileType   String   @map("file_type")
+  fileSize   Int      @map("file_size")
+  url        String
+  category   String   @default("general") // general | avatar | banner | media | document
+  uploadedBy String?  @map("uploaded_by")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, category])
+  @@map("files")
+}
+
+// ═══════════════════════════════════════════════════════════════
+// VERTICAL TEMPLATES — Fase 13: SaaS Multi-Tenant por Vertical
+// ═══════════════════════════════════════════════════════════════
+
+// ── VerticalTemplate — Plantilla de configuración por vertical ─
+model VerticalTemplate {
+  id          String  @id @default(uuid()) @db.Uuid
+  slug        String  @unique // barberia, salon-belleza, spa, etc.
+  name        String // "Barbería Premium", "Salón Belleza", etc.
+  version     String  @default("v1") // v1, v2, v3...
+  vertical    String // barber | salon | spa | estetica | clinica
+  isActive    Boolean @default(true) @map("is_active")
+  description String  @default("")
+
+  // Configuración completa del template (JSON)
+  config Json @default("{}")
+  // branding: { primaryColor, secondaryColor, logoUrl?, bannerUrl?, faviconUrl?, tagline? }
+  // businessHours: { weeklyHours, holidays, lunchBreak, lastAcceptedTime, minimumBufferMinutes, latePolicy }
+  // services: array of services
+  // stylists: array of stylists
+  // policies: { cancellationPolicy, latePolicy, welcomeMessage }
+  // ai: { autoReplyEnabled, aiMode, aiRules, bookingRules, availabilityRules }
+  // knowledge: { salonProfile, faqs, aiRules, prompts }
+  // businessSettings: { brandTone, shortDescription, mainPromise }
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  backups TenantConfigBackup[]
+
+  @@index([vertical, isActive])
+  @@map("vertical_templates")
+}
+
+// ── TenantConfigBackup — Snapshot de config pre-aplicación ─────
+model TenantConfigBackup {
+  id         String  @id @default(uuid()) @db.Uuid
+  tenantId   String  @map("tenant_id") @db.Uuid
+  templateId String? @map("template_id") @db.Uuid
+  version    String  @default("v1") // qué versión se aplicó
+
+  // Snapshot de toda la configuración antes de aplicar
+  snapshot Json @default("{}")
+  // tenant snapshot: { businessName, businessType, primaryColor, ... }
+  // businessSettings: { businessHours, services, stylists, brandTone, ... }
+  // aiSettings: { autoReplyEnabled, aiMode, aiRules, ... }
+  // knowledgeItems: { salonProfile, faqs, ... }
+
+  appliedAt DateTime @default(now()) @map("applied_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  tenant   Tenant            @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  template VerticalTemplate? @relation(fields: [templateId], references: [id])
+
+  @@index([tenantId])
+  @@map("tenant_config_backups")
+}

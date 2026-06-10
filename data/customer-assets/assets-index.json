@@ -1,0 +1,243 @@
+[
+  {
+    "id": "c9bc9266-6075-4dfa-94d9-438de7a444c7",
+    "conversationId": "56920103822",
+    "phone": "56920103822",
+    "customerName": "אני אוהב אותך אדוני ישוע",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "originalMediaId": "996790836220365",
+    "localPath": "D:\\SENDMEPRO\\PROYECTOS\\SENDME STUDIO\\Salon_Belleza\\data\\customer-assets\\56920103822\\images\\2026-05-25T193423000Z-image-996790836220365.jpg",
+    "publicUrl": "/api/customer-assets?id=c9bc9266-6075-4dfa-94d9-438de7a444c7",
+    "caption": "Nuevo image recibido",
+    "receivedAt": "2026-05-25T19:34:23.000Z",
+    "source": "whatsapp",
+    "tags": [
+      "whatsapp",
+      "customer-upload",
+      "image"
+    ],
+    "usageFlags": {
+      "diagnosis": true,
+      "campaignCandidate": true,
+      "beforeAfterCandidate": false
+    },
+    "rawMetaPayload": {
+      "webhook": {
+        "from": "56920103822",
+        "from_user_id": "CL.863325403488958",
+        "id": "wamid.HBgLNTY5MjAxMDM4MjIVAgASGBQzQUY4NjdBQjlCOERBQzVDM0VDNgA=",
+        "timestamp": "1779737663",
+        "type": "image",
+        "image": {
+          "mime_type": "image/jpeg",
+          "sha256": "jXimIX4KbBDNTpXFySvYUt6xk8j5ubH1QaHlOAGyqvc=",
+          "id": "996790836220365",
+          "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=996790836220365&source=webhook&ext=1779737965&hash=ARlqZDwV3p35SnmtxOufJML-m7rc4xw9GxOlaEddpKxMRQ"
+        }
+      },
+      "media": {
+        "id": "996790836220365",
+        "messaging_product": "whatsapp",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=996790836220365&source=getMedia&ext=1779737965&hash=ARkPkBmQaAGBuF5UW5vPfSZAYtoW1IeOUauSJzBUyqb3Ow",
+        "mime_type": "image/jpeg",
+        "sha256": "8d78a6217e0a6c10cd4e95c5c92bd852deb193c8f9b9b1f541a1e53801b2aaf7",
+        "file_size": 153472
+      }
+    }
+  },
+  {
+    "id": "4c6b4aa2-2993-4780-bc54-90332c13cad9",
+    "conversationId": "56920103822",
+    "phone": "56920103822",
+    "customerName": "אני אוהב אותך אדוני ישוע",
+    "type": "image",
+    "mimeType": "application/octet-stream",
+    "originalMediaId": "1029716759482019",
+    "localPath": null,
+    "publicUrl": null,
+    "caption": "Nuevo image recibido",
+    "receivedAt": "2026-05-25T21:53:38.000Z",
+    "source": "whatsapp",
+    "tags": [
+      "whatsapp",
+      "customer-upload",
+      "image"
+    ],
+    "usageFlags": {
+      "diagnosis": true,
+      "campaignCandidate": true,
+      "beforeAfterCandidate": false
+    },
+    "rawMetaPayload": {
+      "from": "56920103822",
+      "from_user_id": "CL.863325403488958",
+      "id": "wamid.HBgLNTY5MjAxMDM4MjIVAgASGBQzQUE2NDgyQjE1RDU5RTdDOUE5QwA=",
+      "timestamp": "1779746018",
+      "type": "image",
+      "image": {
+        "mime_type": "image/jpeg",
+        "sha256": "Y6YtQ7P9VUz4r6sVP1lYiZ/EigskHBwdTWbyMrzEZF4=",
+        "id": "1029716759482019",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1029716759482019&source=webhook&ext=1779746320&hash=ARm0cPPWruRQFtsh9pgu08_ToDYQWFAGyFqAkzmcco-wKg"
+      }
+    },
+    "error": {
+      "message": "Authentication Error",
+      "statusCode": 401,
+      "metaResponse": {
+        "error": {
+          "message": "Authentication Error",
+          "code": 190,
+          "type": "OAuthException",
+          "fbtrace_id": "AgF4Mv0sHOvw9nuIxiiM8sa"
+        }
+      }
+    }
+  },
+  {
+    "id": "20f6f2bd-8462-4cc6-96ec-ab58efbf98a7",
+    "conversationId": "56920103822",
+    "phone": "56920103822",
+    "customerName": "אני אוהב אותך אדוני ישוע",
+    "type": "image",
+    "mimeType": "application/octet-stream",
+    "originalMediaId": "1289289416694732",
+    "localPath": null,
+    "publicUrl": null,
+    "caption": "Nuevo image recibido",
+    "receivedAt": "2026-05-25T22:17:50.000Z",
+    "source": "whatsapp",
+    "tags": [
+      "whatsapp",
+      "customer-upload",
+      "image"
+    ],
+    "usageFlags": {
+      "diagnosis": true,
+      "campaignCandidate": true,
+      "beforeAfterCandidate": false
+    },
+    "rawMetaPayload": {
+      "from": "56920103822",
+      "from_user_id": "CL.863325403488958",
+      "id": "wamid.HBgLNTY5MjAxMDM4MjIVAgASGBQzQUZCNkY3NkFBMkQ2RUM2OTNFOQA=",
+      "timestamp": "1779747470",
+      "type": "image",
+      "image": {
+        "mime_type": "image/jpeg",
+        "sha256": "MOJg1FxZ3W43eRHInZ/OqwUZ8YJ3AJUr8Yyj2PDaU28=",
+        "id": "1289289416694732",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1289289416694732&source=webhook&ext=1779747772&hash=ARlkRUzhTKLcnSpTZ7tML5ZxOXkuqWi3BngZlV4sPtTCBg"
+      }
+    },
+    "error": {
+      "message": "Authentication Error",
+      "statusCode": 401,
+      "metaResponse": {
+        "error": {
+          "message": "Authentication Error",
+          "code": 190,
+          "type": "OAuthException",
+          "fbtrace_id": "Ap7vCPW_Bj_I76MX7sC9gMI"
+        }
+      }
+    }
+  },
+  {
+    "id": "5dceda3f-dc36-4968-9423-30f773e0c2cd",
+    "conversationId": "56920103822",
+    "phone": "56920103822",
+    "customerName": "אני אוהב אותך אדוני ישוע",
+    "type": "image",
+    "mimeType": "application/octet-stream",
+    "originalMediaId": "1512806727179675",
+    "localPath": null,
+    "publicUrl": null,
+    "caption": "Nuevo image recibido",
+    "receivedAt": "2026-05-25T22:49:43.000Z",
+    "source": "whatsapp",
+    "tags": [
+      "whatsapp",
+      "customer-upload",
+      "image"
+    ],
+    "usageFlags": {
+      "diagnosis": true,
+      "campaignCandidate": true,
+      "beforeAfterCandidate": false
+    },
+    "rawMetaPayload": {
+      "from": "56920103822",
+      "from_user_id": "CL.863325403488958",
+      "id": "wamid.HBgLNTY5MjAxMDM4MjIVAgASGBQzQThDRjRFQUUxQUE1NkRDRDZCMAA=",
+      "timestamp": "1779749383",
+      "type": "image",
+      "image": {
+        "mime_type": "image/jpeg",
+        "sha256": "jXimIX4KbBDNTpXFySvYUt6xk8j5ubH1QaHlOAGyqvc=",
+        "id": "1512806727179675",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1512806727179675&source=webhook&ext=1779749685&hash=ARlV0CUofPkwMQog20HbV9W6vKReZiLfvwq7R38lkozGsQ"
+      }
+    },
+    "error": {
+      "message": "Authentication Error",
+      "statusCode": 401,
+      "metaResponse": {
+        "error": {
+          "message": "Authentication Error",
+          "code": 190,
+          "type": "OAuthException",
+          "fbtrace_id": "A7mWcthSRc4YdItwRJCetgC"
+        }
+      }
+    }
+  },
+  {
+    "id": "5319f336-1303-4355-934c-68504374fbfd",
+    "conversationId": "56920103822",
+    "phone": "56920103822",
+    "customerName": "אני אוהב אותך אדוני ישוע",
+    "type": "image",
+    "mimeType": "image/jpeg",
+    "originalMediaId": "1619875212408643",
+    "localPath": "D:\\SENDMEPRO\\PROYECTOS\\SENDME STUDIO\\Salon_Belleza\\data\\customer-assets\\56920103822\\images\\2026-05-26T195238000Z-image-1619875212408643.jpg",
+    "publicUrl": "/api/customer-assets?id=5319f336-1303-4355-934c-68504374fbfd",
+    "caption": "Nuevo image recibido",
+    "receivedAt": "2026-05-26T19:52:38.000Z",
+    "source": "whatsapp",
+    "tags": [
+      "whatsapp",
+      "customer-upload",
+      "image"
+    ],
+    "usageFlags": {
+      "diagnosis": true,
+      "campaignCandidate": true,
+      "beforeAfterCandidate": false
+    },
+    "rawMetaPayload": {
+      "webhook": {
+        "from": "56920103822",
+        "from_user_id": "CL.863325403488958",
+        "id": "wamid.HBgLNTY5MjAxMDM4MjIVAgASGBYzRUIwQkZBRUIxREI2N0NENDRDRjRDAA==",
+        "timestamp": "1779825158",
+        "type": "image",
+        "image": {
+          "mime_type": "image/jpeg",
+          "sha256": "o2w8eAKRfrmrvtyXiC4KBXskQ6peNfdAwQtFOmLt/1o=",
+          "id": "1619875212408643",
+          "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1619875212408643&source=webhook&ext=1779825460&hash=ARneuiWETJIzJi90BVtZdjJepbVvbn4-Nht--fzJNIGVsA"
+        }
+      },
+      "media": {
+        "id": "1619875212408643",
+        "messaging_product": "whatsapp",
+        "url": "https://lookaside.fbsbx.com/whatsapp_business/attachments/?mid=1619875212408643&source=getMedia&ext=1779825461&hash=ARkOxQkqVjp2Ivdi3Xu0AXis8NEtzG0GJrBFGHDcLe46Pg",
+        "mime_type": "image/jpeg",
+        "sha256": "a36c3c7802917eb9abbedc97882e0a057b2443aa5e35f740c10b453a62edff5a",
+        "file_size": 277402
+      }
+    }
+  }
+]

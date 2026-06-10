@@ -1,0 +1,74 @@
+{
+  "stylists": [
+    {
+      "id": "renata",
+      "name": "Renata",
+      "services": ["balayage", "color", "hidratacion"]
+    },
+    {
+      "id": "martina",
+      "name": "Martina",
+      "services": ["balayage", "corte", "hidratacion", "color"]
+    }
+  ],
+  "services": [
+    {
+      "id": "balayage",
+      "label": "Balayage",
+      "durationMinutes": 180,
+      "keywords": ["balayage", "mechas", "rubia", "rubio", "babylight"]
+    },
+    {
+      "id": "corte",
+      "label": "Corte",
+      "durationMinutes": 60,
+      "keywords": ["corte", "cortar", "flequillo", "cabello"]
+    },
+    {
+      "id": "hidratacion",
+      "label": "Hidratacion",
+      "durationMinutes": 75,
+      "keywords": ["hidratacion", "olaplex", "ritual", "repair"]
+    },
+    {
+      "id": "color",
+      "label": "Color",
+      "durationMinutes": 120,
+      "keywords": ["color", "coloracion", "tintura", "tono"]
+    }
+  ],
+  "slots": [
+    {
+      "id": "thu-1000-renata-balayage",
+      "label": "Jueves 10:00",
+      "date": "2026-05-28",
+      "time": "10:00",
+      "stylistId": "renata",
+      "serviceIds": ["balayage", "color"]
+    },
+    {
+      "id": "thu-1330-martina-balayage",
+      "label": "Jueves 13:30",
+      "date": "2026-05-28",
+      "time": "13:30",
+      "stylistId": "martina",
+      "serviceIds": ["balayage", "hidratacion"]
+    },
+    {
+      "id": "fri-1600-renata-color",
+      "label": "Viernes 16:00",
+      "date": "2026-05-29",
+      "time": "16:00",
+      "stylistId": "renata",
+      "serviceIds": ["color", "hidratacion"]
+    },
+    {
+      "id": "fri-1700-martina-corte",
+      "label": "Viernes 17:00",
+      "date": "2026-05-29",
+      "time": "17:00",
+      "stylistId": "martina",
+      "serviceIds": ["corte"]
+    }
+  ]
+}

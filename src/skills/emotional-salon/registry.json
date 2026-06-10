@@ -1,0 +1,79 @@
+{
+  "skill": "emotional-salon",
+  "version": "0.4.0",
+  "status": "foundation",
+  "createdAt": "2026-05-29T23:08:00Z",
+  "lastUpdated": "2026-05-30T01:49:00Z",
+  "sections": {
+    "home": {
+      "status": "foundation-created",
+      "description": "Dashboard, appointments, client intelligence, daily metrics",
+      "agents": [
+        { "name": "HomeOrchestratorAgent", "status": "created", "phase": 2.2, "description": "Coordinate Home dashboard" },
+        { "name": "HomeDataSourceAgent", "status": "created", "phase": 2.2, "description": "Map widgets to data sources" },
+        { "name": "HomeInspectorAgent", "status": "created", "phase": 2.2, "description": "Detect widget/data problems" },
+        { "name": "HomeHealthCheckAgent", "status": "created", "phase": 2.2, "description": "Verify Home stability" },
+        { "name": "HomeLearningAgent", "status": "created", "phase": 2.2, "description": "Bridge to Intelligence pipeline" },
+        { "name": "HomeMetricsAgent", "status": "created", "phase": 2.3, "description": "Calculate real KPI metrics" },
+        { "name": "HomeAIInsightAgent", "status": "created", "phase": 2.3, "description": "Generate dossier insights" }
+      ]
+    },
+    "messages": {
+      "status": "planned",
+      "description": "WhatsApp inbox, reception, intent detection, auto-reply, conversation memory",
+      "agents": [
+        { "name": "ReceptionOrchestratorAgent", "status": "planned", "phase": 3 },
+        { "name": "ConversationInspectorAgent", "status": "planned", "phase": 3 },
+        { "name": "IntentDetectionAgent", "status": "planned", "phase": 3 },
+        { "name": "DraftResponseAgent", "status": "planned", "phase": 3 },
+        { "name": "MetaReplyGuardAgent", "status": "planned", "phase": 3 },
+        { "name": "ConversationMemoryAgent", "status": "planned", "phase": 3 }
+      ]
+    },
+    "campaigns": {
+      "status": "planned",
+      "description": "Campaign creation, audience segments, template validation, compliance, delivery monitoring",
+      "agents": [
+        { "name": "CampaignOrchestratorAgent", "status": "planned", "phase": 4 },
+        { "name": "AudienceAgent", "status": "planned", "phase": 4 },
+        { "name": "TemplateValidationAgent", "status": "planned", "phase": 4 },
+        { "name": "CampaignComplianceAgent", "status": "planned", "phase": 4 },
+        { "name": "DeliveryMonitorAgent", "status": "planned", "phase": 4 },
+        { "name": "CampaignLearningAgent", "status": "planned", "phase": 4 }
+      ]
+    },
+    "intelligence": {
+      "status": "planned",
+      "description": "Client profiling, preference mining, opportunity detection, salon trends",
+      "agents": [
+        { "name": "IntelligenceOrchestratorAgent", "status": "planned", "phase": 5 },
+        { "name": "ClientProfileAgent", "status": "planned", "phase": 5 },
+        { "name": "PreferenceMiningAgent", "status": "planned", "phase": 5 },
+        { "name": "OpportunityDetectionAgent", "status": "planned", "phase": 5 },
+        { "name": "SalonTrendsAgent", "status": "planned", "phase": 5 }
+      ]
+    }
+  },
+  "systemAgents": [
+    { "name": "AgentRegistry", "status": "created", "phase": 1 },
+    { "name": "AgentInspector", "status": "created", "phase": 1 },
+    { "name": "CuratorAgent", "status": "created", "phase": 1 },
+    { "name": "RecoveryAgent", "status": "created", "phase": 1 },
+    { "name": "HealthCheckAgent", "status": "created", "phase": 1 }
+  ],
+  "safety": {
+    "metaCompliance": true,
+    "whatsappCompliance": true,
+    "checkpointBeforeChanges": true,
+    "rollbackOnFailure": true
+  },
+  "dependencies": {
+    "system": ["src/agents/system/*"],
+    "created": ["src/agents/home/*", "src/repositories/*"],
+    "future": [
+      "src/agents/messages/*",
+      "src/agents/campaigns/*",
+      "src/agents/intelligence/*"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "defaultMode": "automatic",
+  "scheduleStart": "22:00",
+  "scheduleEnd": "08:00",
+  "averageHumanResponseMinutes": 4,
+  "conversationOverrides": {
+    "1": {
+      "mode": "scheduled"
+    },
+    "56920103822": {
+      "mode": "manual"
+    }
+  }
+}

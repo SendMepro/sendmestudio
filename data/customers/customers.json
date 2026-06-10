@@ -1,0 +1,73 @@
+[
+  {
+    "id": "18036996-f42a-4a73-a464-870ee5bf484b",
+    "phone": "56920103822",
+    "displayName": "אני אוהב אותך אדוני ישוע",
+    "firstName": "Galleano",
+    "tags": [
+      "sent-photo",
+      "vip",
+      "balayage",
+      "warm-lead",
+      "whatsapp-consent",
+      "balayage-interest",
+      "new-lead",
+      "hair-repair",
+      "hidratación-interest",
+      "color",
+      "lead-hot",
+      "corte",
+      "lead",
+      "lavado"
+    ],
+    "interests": [
+      "balayage",
+      "hidratación",
+      "corte",
+      "lavado"
+    ],
+    "requestedServices": [
+      "balayage",
+      "hidratación",
+      "corte",
+      "lavado"
+    ],
+    "lastVisit": "2026-03-29",
+    "lastConversationAt": "2026-05-31T04:44:04.000Z",
+    "preferredStylist": null,
+    "favoriteServices": [
+      "balayage",
+      "hidratación",
+      "corte"
+    ],
+    "uploadedAssets": [
+      "5dceda3f-dc36-4968-9423-30f773e0c2cd",
+      "5319f336-1303-4355-934c-68504374fbfd"
+    ],
+    "campaignEligible": true,
+    "consentWhatsapp": true,
+    "notes": "Perfil de Galleano. Cliente habitual con preferencia por servicios de coloración y tratamientos capilares.",
+    "aiSummary": "Interés detectado en corte, lavado.",
+    "lifecycleStage": "lead",
+    "serviceHistory": [
+      {
+        "service": "Balayage Premium + Hidratación",
+        "date": "2026-05-10",
+        "specialist": "Sofía",
+        "price": "$85.000"
+      },
+      {
+        "service": "Corte y Baño de Crema",
+        "date": "2026-05-05",
+        "specialist": "Daniela",
+        "price": "$22.000"
+      },
+      {
+        "service": "Tratamiento Capilar Intensivo",
+        "date": "2026-04-28",
+        "specialist": "Sofía",
+        "price": "$45.000"
+      }
+    ]
+  }
+]

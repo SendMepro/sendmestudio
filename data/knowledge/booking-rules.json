@@ -1,0 +1,22 @@
+{
+  "requiresPriorEvaluation": [
+    "balayage",
+    "color",
+    "alisado"
+  ],
+  "requiresHairPhoto": [
+    "balayage",
+    "color"
+  ],
+  "requiresDeposit": [
+    "balayage"
+  ],
+  "cancellationPolicy": "Cancelar o reagendar con 24 horas de anticipación.",
+  "latePolicy": "Tolerancia de 10 minutos según disponibilidad del día.",
+  "autoConfirmation": true,
+  "autoReminder": true,
+  "minimumBookingWindowHours": 4,
+  "confirmationMessageByService": {
+    "balayage": "Tu reserva de balayage queda confirmada. Por favor envíanos una foto de tu cabello con luz natural."
+  }
+}

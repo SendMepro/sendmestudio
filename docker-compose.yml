@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: sendmestudio_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./business-brain:/app/business-brain
+    environment:
+      - NODE_ENV=production
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - META_WHATSAPP_TOKEN=${META_WHATSAPP_TOKEN}
+      - META_PHONE_NUMBER_ID=${META_PHONE_NUMBER_ID}
+      - META_BUSINESS_ACCOUNT_ID=${META_BUSINESS_ACCOUNT_ID}
+      - META_VERIFY_TOKEN=${META_VERIFY_TOKEN}
+      - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL:-https://sendmestudio.com}
+    restart: unless-stopped

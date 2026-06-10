@@ -1,0 +1,71 @@
+{
+  "uploadedConversations": 22,
+  "premiumFeature": true,
+  "storage": {
+    "local": true,
+    "googleDrive": "optional_ready",
+    "s3": "optional_ready",
+    "supabase": "optional_ready"
+  },
+  "metrics": {
+    "brainConfidence": 73,
+    "emotionalUnderstanding": 0,
+    "campaignAccuracy": 0,
+    "conversionIntelligence": 0,
+    "toneConsistency": 0
+  },
+  "topConvertingTones": [],
+  "strongestEmotionalTriggers": [],
+  "serviceDemand": [],
+  "bestPerformingResponses": [],
+  "lastUploads": [
+    {
+      "id": "cb813788-c2e5-42ea-aea9-65c4de24da80",
+      "originalName": "WhatsApp Image 2026-05-26 at 10.35.24 PM (2).jpeg",
+      "sourceType": "whatsapp-screenshot",
+      "uploadedAt": "2026-05-28T06:04:36.647Z",
+      "leadWarmth": "cold",
+      "bookingIntent": "not_detected"
+    },
+    {
+      "id": "c6124c6b-b802-4d1a-8f31-2b9ec70560f1",
+      "originalName": "WhatsApp Image 2026-05-26 at 10.35.24 PM (3).jpeg",
+      "sourceType": "whatsapp-screenshot",
+      "uploadedAt": "2026-05-28T06:01:44.739Z",
+      "leadWarmth": "cold",
+      "bookingIntent": "not_detected"
+    },
+    {
+      "id": "0114853f-01f0-4ec2-9fb3-3a01000d2f98",
+      "originalName": "WhatsApp Image 2026-05-26 at 10.39.27 PM (2).jpeg",
+      "sourceType": "whatsapp-screenshot",
+      "uploadedAt": "2026-05-28T05:53:22.561Z",
+      "leadWarmth": "cold",
+      "bookingIntent": "not_detected"
+    },
+    {
+      "id": "82eaf576-cf6e-4697-a1a1-6f1648ace872",
+      "originalName": "WhatsApp Image 2026-05-26 at 10.39.27 PM.jpeg",
+      "sourceType": "whatsapp-screenshot",
+      "uploadedAt": "2026-05-28T05:22:12.456Z",
+      "leadWarmth": "cold",
+      "bookingIntent": "not_detected"
+    },
+    {
+      "id": "b67990b9-c273-419d-8f63-ea5255a8e129",
+      "originalName": "WhatsApp Image 2026-05-26 at 10.39.27 PM (2).jpeg",
+      "sourceType": "whatsapp-screenshot",
+      "uploadedAt": "2026-05-28T05:21:05.040Z",
+      "leadWarmth": "cold",
+      "bookingIntent": "not_detected"
+    },
+    {
+      "id": "cb45f590-ce95-4a40-9f1e-8a4d549db346",
+      "originalName": "BS_Dia_03.png",
+      "sourceType": "whatsapp-screenshot",
+      "uploadedAt": "2026-05-28T05:10:08.507Z",
+      "leadWarmth": "cold",
+      "bookingIntent": "not_detected"
+    }
+  ]
+}

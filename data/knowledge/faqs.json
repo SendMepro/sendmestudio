@@ -1,0 +1,35 @@
+[
+  {
+    "question": "¿Dónde están ubicados?",
+    "answer": "Estamos en el salón indicado en nuestra ficha. Podemos enviarte ubicación por WhatsApp.",
+    "keywords": [
+      "ubicación",
+      "dirección",
+      "donde"
+    ],
+    "autoReplyAllowed": true,
+    "requiresHuman": false
+  },
+  {
+    "question": "¿Qué medios de pago aceptan?",
+    "answer": "Aceptamos transferencia, tarjetas y efectivo.",
+    "keywords": [
+      "pago",
+      "tarjeta",
+      "transferencia"
+    ],
+    "autoReplyAllowed": true,
+    "requiresHuman": false
+  },
+  {
+    "question": "¿Cuánto dura un balayage?",
+    "answer": "Un balayage suele durar entre 3 y 4 horas según diagnóstico, largo y estado del cabello.",
+    "keywords": [
+      "duración",
+      "balayage",
+      "cuánto demora"
+    ],
+    "autoReplyAllowed": true,
+    "requiresHuman": false
+  }
+]

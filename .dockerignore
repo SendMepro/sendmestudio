@@ -1,0 +1,51 @@
+# ─── Dependencias ───
+node_modules/
+
+# ─── Build ───
+.next/
+
+# ─── Git ───
+.git/
+
+# ─── Entorno ───
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+
+# ─── Testing ───
+coverage/
+
+# ─── Logs ───
+logs/
+*.log
+
+# ─── Archivos comprimidos ───
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# ─── IDE ───
+.idea/
+.vscode/
+
+# ─── Sistema operativo ───
+.DS_Store
+Thumbs.db
+
+# ─── Proyectos legado ───
+liquid-glass-studio-main/
+STUDIO/
+mock-dashboard/
+chrome/
+screenshots/
+
+# ─── TypeScript ───
+*.tsbuildinfo
+
+# ─── Scripts temporales ───
+*.bat
+*.ps1
+*.cmd

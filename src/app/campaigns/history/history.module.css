@@ -1,0 +1,538 @@
+/* ════════════════════════════════════════════════
+   Campaign History Page
+   ════════════════════════════════════════════════ */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(198,163,109,0.06), transparent 32%),
+    radial-gradient(circle at 88% 94%, rgba(124,92,255,0.07), transparent 32%),
+    linear-gradient(135deg, #fbfaff 0%, #ffffff 44%, #f2edff 100%);
+}
+
+/* ── Header ── */
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.headerIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(198,163,109,0.15), rgba(124,92,255,0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7c5cff;
+  flex-shrink: 0;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #1e0a3c;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.pageSub {
+  margin: 2px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(91,84,108,0.65);
+}
+
+/* ── Search ── */
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(200,180,240,0.35);
+  border-radius: 10px;
+  padding: 0 12px;
+  height: 38px;
+  width: 220px;
+  transition: all .12s;
+}
+
+.searchBox:focus-within {
+  border-color: rgba(124,92,255,0.4);
+  box-shadow: 0 0 0 3px rgba(124,92,255,0.08);
+}
+
+.searchIcon {
+  color: rgba(91,84,108,0.4);
+  flex-shrink: 0;
+}
+
+.searchInput {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  font-family: inherit;
+  color: #1e0a3c;
+  margin-left: 8px;
+  width: 100%;
+}
+
+.searchInput::placeholder {
+  color: rgba(91,84,108,0.4);
+}
+
+/* ── Filter bar ── */
+.filterBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.filterChips {
+  display: flex;
+  gap: 4px;
+}
+
+.filterChip {
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid rgba(200,180,240,0.35);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.7);
+  color: #5a3f8a;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .1s;
+  white-space: nowrap;
+}
+
+.filterChip:hover {
+  border-color: rgba(124,92,255,0.35);
+  background: rgba(245,243,255,0.6);
+}
+
+.filterChipActive {
+  background: #7c5cff;
+  color: #fff;
+  border-color: #7c5cff;
+}
+
+.filterChipActive:hover {
+  background: #6a4de6;
+  border-color: #6a4de6;
+}
+
+.customRange {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dateInput {
+  height: 30px;
+  padding: 0 8px;
+  border: 1px solid rgba(200,180,240,0.35);
+  border-radius: 8px;
+  background: #fff;
+  font-size: 12px;
+  font-family: inherit;
+  color: #1e0a3c;
+  outline: none;
+}
+
+.dateInput:focus {
+  border-color: rgba(124,92,255,0.4);
+}
+
+.dateSep {
+  color: rgba(91,84,108,0.4);
+  font-size: 12px;
+}
+
+.statusChips {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+
+/* ── KPI Row ── */
+.kpiRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.kpiCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(237,233,254,0.7);
+  border-radius: 12px;
+  padding: 10px 14px;
+  flex: 1;
+  min-width: 120px;
+  box-shadow: 0 2px 8px rgba(124,92,255,0.03);
+}
+
+.kpiIconWrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.kpiInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.kpiValue {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1e0a3c;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.kpiLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(91,84,108,0.55);
+  white-space: nowrap;
+}
+
+.statusChip {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(200,180,240,0.25);
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(91,84,108,0.6);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all .1s;
+  white-space: nowrap;
+}
+
+.statusChip:hover {
+  border-color: rgba(124,92,255,0.3);
+  color: #5a3f8a;
+}
+
+.statusChipActive {
+  background: rgba(124,92,255,0.1);
+  color: #7c5cff;
+  border-color: rgba(124,92,255,0.25);
+}
+
+/* ── Content area ── */
+.contentArea {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Table ── */
+.tableWrap {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(237,233,254,0.7);
+  border-radius: 14px;
+  overflow: auto;
+  box-shadow: 0 4px 16px rgba(124,92,255,0.04);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.th {
+  position: sticky;
+  top: 0;
+  background: rgba(246,241,255,0.85);
+  backdrop-filter: blur(4px);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(91,84,108,0.55);
+  border-bottom: 1px solid rgba(237,233,254,0.8);
+  white-space: nowrap;
+}
+
+.tr {
+  cursor: pointer;
+  transition: background .08s;
+  border-bottom: 1px solid rgba(237,233,254,0.4);
+}
+
+.tr:hover {
+  background: rgba(245,243,255,0.5);
+}
+
+.trActive {
+  background: rgba(245,243,255,0.7) !important;
+  box-shadow: inset 3px 0 0 #7c5cff;
+}
+
+.td {
+  padding: 10px 14px;
+  color: #1e0a3c;
+  white-space: nowrap;
+}
+
+.campaignName {
+  font-weight: 700;
+  color: #1e0a3c;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  height: 20px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.emptyCell {
+  padding: 40px 14px;
+  text-align: center;
+  color: rgba(91,84,108,0.5);
+  font-size: 13px;
+}
+
+/* ── Detail panel ── */
+.detailPanel {
+  width: 360px;
+  min-width: 320px;
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(237,233,254,0.7);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(124,92,255,0.04);
+}
+
+.detailHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid rgba(237,233,254,0.8);
+  gap: 8px;
+}
+
+.detailTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1e0a3c;
+  line-height: 1.2;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detailClose {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid rgba(200,180,240,0.3);
+  background: #fff;
+  color: rgba(91,84,108,0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all .1s;
+}
+
+.detailClose:hover {
+  background: rgba(239,68,68,0.06);
+  border-color: rgba(239,68,68,0.25);
+  color: #dc2626;
+}
+
+.detailBody {
+  padding: 14px 18px 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(237,233,254,0.3);
+  gap: 8px;
+}
+
+.detailLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(91,84,108,0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.detailValue {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e0a3c;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
+
+/* ── Metrics grid ── */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(237,233,254,0.6);
+}
+
+.metricCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(246,241,255,0.5);
+  border-radius: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(237,233,254,0.5);
+}
+
+.metricIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(124,92,255,0.08);
+  color: #7c5cff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metricInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricValue {
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e0a3c;
+  line-height: 1;
+}
+
+.metricLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(91,84,108,0.5);
+  margin-top: 2px;
+}
+
+/* ── Body preview ── */
+.bodySection {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(237,233,254,0.6);
+}
+
+.bodySection .detailLabel {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.bodyPreview {
+  background: rgba(246,241,255,0.4);
+  border: 1px solid rgba(237,233,254,0.4);
+  border-radius: 10px;
+  padding: 12px 14px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.bodyLine {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(30,10,60,0.8);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.bodyLine + .bodyLine {
+  margin-top: 4px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .page {
+    padding: 14px 14px;
+  }
+
+  .contentArea {
+    flex-direction: column;
+  }
+
+  .detailPanel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .filterBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .statusChips {
+    margin-left: 0;
+  }
+}

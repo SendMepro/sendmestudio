@@ -1,0 +1,63 @@
+{
+  "project": "Salon_Belleza",
+  "menu": "Emotional Salon",
+  "currentPhase": "agent-governance-audit",
+  "lastStableCheckpoint": "checkpoint-94-knowledge-complete",
+  "lastCompletedStep": "Phase H-5: Inbox Integration + Audit — all 19 checkpoints CP-45 through CP-59 complete. Inbox page.tsx reduced 42%.",
+  "nextStep": "Agent Governance / SystemSupervisorAgent audit plan — review agent ecosystem before new section agents",
+  "blockedBy": null,
+  "completedPhases": {
+    "home": { "status": "complete", "detail": "Home UI extraction (E-1 through E-6), agents (F-1 through F-6), tests (G)" },
+    "inbox": { "status": "complete", "detail": "H-1 through H-5, 19 checkpoints, 21 new files, page.tsx 2,617→1,516 lines (-42%)" },
+    "campaigns": { "status": "complete", "detail": "CP-62 campaign hooks integration verified passing" },
+    "brain-admin": { "status": "complete", "detail": "BA-1 through BA-15, 19 new files, page.tsx 1,716→861 lines (-50%)" },
+    "knowledge": { "status": "complete", "detail": "CP-94, 12 new files, page.tsx 718→135 lines (-81%)" },
+    "clients": { "status": "deferred", "detail": "CP-88: /clients removed from sidebar, route deprecated, Contacts drawer is replacement" },
+    "docs-relocation": { "status": "complete", "detail": "54 root .md files moved to docs/ subfolders, 5 essential root files kept" },
+    "build-fix": { "status": "complete", "detail": "TS errors fixed, build passes (tsc --noEmit: 0 errors)" }
+  },
+  "pendingTasks": ["Agent Governance / SystemSupervisorAgent audit plan — NOT Inbox Hooks Extraction (already done)"],
+  "blockedTasks": [],
+  "agentsCreated": [
+    "AgentRegistry", "AgentInspector", "CuratorAgent", "RecoveryAgent", "HealthCheckAgent", "AgentLifecycleAgent",
+    "HomeOrchestratorAgent", "HomeDataSourceAgent", "HomeInspectorAgent", "HomeHealthCheckAgent", "HomeLearningAgent",
+    "HomeMetricsAgent", "HomeAIInsightAgent",
+    "EventBus", "IntelligenceLayer", "RecommendationEngine",
+    "AppointmentSelectionConsumer", "ClientArrivalConsumer"
+  ],
+  "sectionsAnalyzed": [
+    {
+      "name": "Home",
+      "path": "src/app/page.tsx",
+      "status": "stable — extracted to 16 components + 7 agents + 5 repositories",
+      "files": ["src/components/home/*", "src/agents/home/*", "src/bridges/HomeBridge.ts", "src/repositories/AppointmentRepository.ts", "src/repositories/ClientRepository.ts", "src/repositories/*"]
+    },
+    {
+      "name": "Inbox",
+      "path": "src/app/inbox/page.tsx",
+      "status": "stable — extracted to 12 components + 9 hooks, 1,516 lines",
+      "files": ["src/app/inbox/page.tsx", "src/app/inbox/inbox.module.css", "src/components/inbox/*", "src/hooks/inbox/*"]
+    },
+    {
+      "name": "Campaigns",
+      "path": "src/app/campaigns/",
+      "status": "stable — hooks integrated",
+      "files": ["src/app/campaigns/page.tsx", "src/app/campaigns/campaigns.module.css", "src/app/campaigns/templateWorkflow.ts"]
+    },
+    {
+      "name": "Brain Admin",
+      "path": "src/app/brain-admin/",
+      "status": "stable — extracted to 8 hooks + 11 components, 861 lines",
+      "files": ["src/app/brain-admin/page.tsx", "src/hooks/brain-admin/*", "src/app/brain-admin/components/*"]
+    },
+    {
+      "name": "Knowledge",
+      "path": "src/app/knowledge/",
+      "status": "stable — extracted to 2 hooks + 10 components, 135 lines",
+      "files": ["src/app/knowledge/page.tsx", "src/hooks/useKnowledgeBundle.ts", "src/hooks/useKnowledgeCompletion.ts", "src/components/knowledge/*"]
+    }
+  ],
+  "appStatus": "build passes (tsc --noEmit: 0 errors)",
+  "phaseFComplete": true,
+  "buildBlockers": []
+}

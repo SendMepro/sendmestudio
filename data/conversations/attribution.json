@@ -1,0 +1,30 @@
+[
+  {
+    "id": "deed475c-ab4d-4323-835a-bfe1f008cc35",
+    "sourceId": "appointment_4b913e56-5eff-4d8c-bbad-bf5fbdb44620",
+    "conversationId": "p0-test-final",
+    "customerName": "Maria Jose Valdes",
+    "phone": "56987654321",
+    "serviceName": "Corte y Bano",
+    "estimatedValue": 0,
+    "createdAt": "2026-05-31T19:44:23.202Z",
+    "updatedAt": "2026-05-31T19:44:23.202Z",
+    "attributionType": "ai_full",
+    "mode": "automatic",
+    "bookingStatus": "confirmed"
+  },
+  {
+    "id": "2a66acf2-ebe0-4e0b-a82f-c6cda806240f",
+    "sourceId": "appointment_631ddbad-092f-4630-ae9e-7268739ae6e6",
+    "conversationId": "1",
+    "customerName": "Valentina Torres",
+    "phone": "56911111111",
+    "serviceName": "Balayage",
+    "estimatedValue": 0,
+    "createdAt": "2026-06-02T21:13:51.983Z",
+    "updatedAt": "2026-06-02T21:13:51.983Z",
+    "attributionType": "ai_full",
+    "mode": "automatic",
+    "bookingStatus": "confirmed"
+  }
+]
