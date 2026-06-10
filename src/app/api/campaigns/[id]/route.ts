@@ -1,9 +1,28 @@
 import { NextResponse } from "next/server";
 import { requireTenantFromNativeRequest } from "@/lib/tenant-helper";
 import prisma from "@/lib/prisma";
+import { z } from "zod";
+import { logFieldOverrideAttempt } from "@/lib/security/audit-log";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+
+// Zod strict schema for campaign updates
+const campaignUpdateSchema = z.object({
+  name: z.string().min(1).max(200).optional(),
+  type: z.string().optional(),
+  status: z.enum(["draft", "active", "paused", "completed", "cancelled"]).optional(),
+  description: z.string().max(2000).optional(),
+  targetCount: z.number().int().min(0).optional(),
+  estimatedMessages: z.number().int().min(0).optional(),
+  scheduledDate: z.string().optional(),
+}).strict();
+
+// Fields that should NEVER come from frontend
+const BLOCKED_FIELDS = [
+  "tenantId", "id", "createdAt", "updatedAt", "ownerId",
+  "role", "isAdmin", "permissions",
+];
 
 export async function PATCH(
   request: Request,
@@ -25,17 +44,32 @@ export async function PATCH(
       return NextResponse.json({ error: "Campaign not found" }, { status: 404 });
     }
 
-    const allowed = [
-      "name", "type", "status", "description",
-      "targetCount", "estimatedMessages", "scheduledDate",
-    ];
-
-    const updateData: Record<string, unknown> = {};
-    for (const key of allowed) {
-      if (body[key] !== undefined) {
-        updateData[key] = body[key];
-      }
+    // ── Block forbidden fields ──
+    const blockedAttempt = BLOCKED_FIELDS.find((f) => body[f] !== undefined);
+    if (blockedAttempt) {
+      logFieldOverrideAttempt({
+        userId: ctx!.user.id,
+        tenantId,
+        field: blockedAttempt,
+        path: request.url,
+        detail: `Blocked field '${blockedAttempt}' in PATCH body`,
+      });
+      return NextResponse.json(
+        { error: `Campo '${blockedAttempt}' no permitido` },
+        { status: 400 },
+      );
     }
+
+    // ── Zod strict validation ──
+    const validation = campaignUpdateSchema.safeParse(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { error: "Datos inválidos", details: validation.error.flatten() },
+        { status: 400 },
+      );
+    }
+
+    const updateData = validation.data;
 
     const updated = await prisma.campaign.update({
       where: { id },

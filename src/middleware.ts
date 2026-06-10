@@ -20,13 +20,6 @@ const PUBLIC_ROUTES = [
   "/api/auth/callback",
   "/api/auth/register",
   "/api/auth/session",
-  "/api/admin",
-  "/admin",
-  "/admin/tenants",
-  "/admin/users",
-  "/admin/ai-costs",
-  "/admin/licenses",
-  "/admin/dashboard",
   "/_next",
   "/favicon",
   "/images",
@@ -47,12 +40,12 @@ export async function middleware(request: NextRequest) {
 
   // Siempre permitir rutas públicas
   if (PUBLIC_ROUTES.some((p) => pathname.startsWith(p))) {
-    return NextResponse.next();
+    return addSecurityHeaders(NextResponse.next());
   }
 
   // Siempre permitir webhooks (tienen su propia verificación)
   if (WEBHOOK_ROUTES.some((p) => pathname.startsWith(p))) {
-    return NextResponse.next();
+    return addSecurityHeaders(NextResponse.next());
   }
 
   // Refrescar sesión y obtener usuario
@@ -66,7 +59,41 @@ export async function middleware(request: NextRequest) {
   }
 
   console.log(`[middleware:${reqId}] ✅ Sesión válida: ${user.email}`);
-  return supabaseResponse;
+  return addSecurityHeaders(supabaseResponse);
+}
+
+/**
+ * Agrega headers de seguridad a todas las respuestas
+ */
+function addSecurityHeaders(response: NextResponse): NextResponse {
+  // CSP básico — Next.js maneja inline scripts con nonces
+  response.headers.set(
+    "Content-Security-Policy",
+    [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval'", // Next.js necesita unsafe-inline/eval para hot reload
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https:",
+      "font-src 'self' data:",
+      "connect-src 'self' https:",
+      "frame-ancestors 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+    ].join("; ")
+  );
+  response.headers.set("X-Frame-Options", "DENY");
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  response.headers.set(
+    "Permissions-Policy",
+    "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  );
+  response.headers.set("X-DNS-Prefetch-Control", "off");
+
+  // Strict-Transport-Security se configura mejor en Nginx
+  // response.headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+
+  return response;
 }
 
 // Configurar rutas que ejecutan el middleware
