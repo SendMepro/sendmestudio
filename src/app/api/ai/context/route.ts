@@ -98,13 +98,13 @@ export async function GET(request: Request) {
             aiSummary: customer.aiSummary,
             serviceHistory: customer.serviceHistory,
           } : null,
-          recentMessages: recentMessages.map((m) => ({
+          recentMessages: recentMessages.map((m: typeof recentMessages[number]) => ({
             direction: m.direction,
             content: m.content.substring(0, 300),
             timestamp: m.timestamp,
             type: m.type,
           })),
-          appointments: appointments.map((a) => ({
+          appointments: appointments.map((a: typeof appointments[number]) => ({
             service: a.service,
             stylist: a.stylist,
             date: a.date,

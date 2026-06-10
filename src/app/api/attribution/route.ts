@@ -32,17 +32,17 @@ export async function GET(request: Request) {
 
   // Compute aggregate metrics
   const aiReservations = attributions.filter(
-    (a) => a.attributionType === "ai_full" || a.attributionType === "ai_assisted"
+    (a: { attributionType: string }) => a.attributionType === "ai_full" || a.attributionType === "ai_assisted"
   );
-  const humanReservations = attributions.filter((a) => a.attributionType === "human");
-  const cancelledAI = attributions.filter((a) => a.attributionType === "ai_cancelled");
+  const humanReservations = attributions.filter((a: { attributionType: string }) => a.attributionType === "human");
+  const cancelledAI = attributions.filter((a: { attributionType: string }) => a.attributionType === "ai_cancelled");
 
   const totalAI = aiReservations.length;
   const totalHuman = humanReservations.length;
   const totalCancelledAI = cancelledAI.length;
 
-  const valueGeneratedAI = aiReservations.reduce((sum, a) => sum + a.estimatedValue, 0);
-  const valueGeneratedHuman = humanReservations.reduce((sum, a) => sum + a.estimatedValue, 0);
+  const valueGeneratedAI = aiReservations.reduce((sum: number, a: { estimatedValue: number }) => sum + a.estimatedValue, 0);
+  const valueGeneratedHuman = humanReservations.reduce((sum: number, a: { estimatedValue: number }) => sum + a.estimatedValue, 0);
 
   const totalConversions = totalAI + totalHuman + totalCancelledAI;
   const conversionRateAI =

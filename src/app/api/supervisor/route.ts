@@ -85,7 +85,7 @@ export async function GET() {
         pollIntervalMs: cached.pollIntervalMs,
         isPolling: cached.isPolling,
         checkedAt: cached.checkedAt,
-        heartbeats: cached.heartbeats.map((hb) => ({
+        heartbeats: cached.heartbeats.map((hb: typeof cached.heartbeats[number]) => ({
           agentName: hb.agentName,
           status: mapHeartbeatToStatus(hb.status),
           lastPing: hb.lastPing,
@@ -107,7 +107,7 @@ export async function GET() {
   const checkedAt = supervisorData?.checkedAt ?? now;
 
   // Build registration map
-  const regMap = new Map(registryAgents.map((a) => [a.name, a]));
+  const regMap = new Map(registryAgents.map((a: typeof registryAgents[number]) => [a.name, a]));
 
   // Merge: heartbeat agents + registry-only agents
   const seen = new Set<string>();
@@ -159,10 +159,10 @@ export async function GET() {
     }
   }
 
-  const totalHealthy = mergedAgents.filter((a) => a.status === 'healthy').length;
-  const totalDegraded = mergedAgents.filter((a) => a.status === 'degraded').length;
-  const totalUnreachable = mergedAgents.filter((a) => a.status === 'unreachable' || a.status === 'failed').length;
-  const totalUnknown = mergedAgents.filter((a) => a.status === 'UNKNOWN' || a.status === 'unknown').length;
+  const totalHealthy = mergedAgents.filter((a: typeof mergedAgents[number]) => a.status === 'healthy').length;
+  const totalDegraded = mergedAgents.filter((a: typeof mergedAgents[number]) => a.status === 'degraded').length;
+  const totalUnreachable = mergedAgents.filter((a: typeof mergedAgents[number]) => a.status === 'unreachable' || a.status === 'failed').length;
+  const totalUnknown = mergedAgents.filter((a: typeof mergedAgents[number]) => a.status === 'UNKNOWN' || a.status === 'unknown').length;
   const totalRegistered = registryAgents.length;
 
   // G-7: Governance coverage = registered agents / total merged agents
@@ -190,7 +190,7 @@ export async function GET() {
       lastEvent: metrics.lastEvent
         ? { type: metrics.lastEvent.type, timestamp: metrics.lastEvent.timestamp, conversationId: metrics.lastEvent.conversationId, metadata: metrics.lastEvent.metadata }
         : null,
-      recentEvents: metrics.recentEvents.map((e) => ({ type: e.type, timestamp: e.timestamp, conversationId: e.conversationId, metadata: e.metadata })),
+      recentEvents: metrics.recentEvents.map((e: typeof metrics.recentEvents[number]) => ({ type: e.type, timestamp: e.timestamp, conversationId: e.conversationId, metadata: e.metadata })),
       byType: metrics.byType,
     };
   } catch {

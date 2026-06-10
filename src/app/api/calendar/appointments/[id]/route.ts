@@ -89,7 +89,7 @@ export async function PATCH(
         select: { id: true, time: true, endTime: true, customerName: true },
       });
 
-      const matchingConflicts = conflicts.filter((a) => {
+      const matchingConflicts = conflicts.filter((a: typeof conflicts[number]) => {
         const aEnd = a.endTime ?? computeEndTime(a.time, 60);
         return rangesOverlap(newTime, updateData.endTime as string, a.time, aEnd);
       });
@@ -99,7 +99,7 @@ export async function PATCH(
           {
             error: "Conflicto de horario",
             conflict: true,
-            conflicts: matchingConflicts.map((c) => ({
+            conflicts: matchingConflicts.map((c: typeof matchingConflicts[number]) => ({
               id: c.id,
               customerName: c.customerName,
               startTime: c.time,

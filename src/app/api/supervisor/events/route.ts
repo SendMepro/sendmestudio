@@ -42,7 +42,7 @@ export async function GET() {
                   metadata: metrics.lastEvent.metadata,
                 }
               : null,
-            recentEvents: metrics.recentEvents.map((e) => ({
+            recentEvents: metrics.recentEvents.map((e: typeof metrics.recentEvents[number]) => ({
               type: e.type,
               timestamp: e.timestamp,
               conversationId: e.conversationId,
@@ -69,7 +69,7 @@ export async function GET() {
                 totalUnreachable: cached.totalUnreachable,
                 checkedAt: cached.checkedAt,
                 isPolling: cached.isPolling,
-                heartbeats: cached.heartbeats.map((hb) => ({
+                heartbeats: cached.heartbeats.map((hb: typeof cached.heartbeats[number]) => ({
                   agentName: hb.agentName,
                   status: hb.status,
                   lastPing: hb.lastPing,

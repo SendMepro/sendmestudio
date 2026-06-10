@@ -81,7 +81,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, error: "At least one contact is required" }, { status: 400 });
     }
 
-    const contacts: AudienceContact[] = body.contacts.map((c) => {
+    const contacts: AudienceContact[] = body.contacts.map((c: { name: string; phone: string }) => {
       const normalizedPhone = normalizePhone(c.phone || "");
       const validWhatsapp = isValidWhatsApp(normalizedPhone);
       return {

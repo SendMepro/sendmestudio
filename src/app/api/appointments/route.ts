@@ -130,7 +130,7 @@ export async function POST(request: Request) {
         select: { id: true, time: true, endTime: true, customerName: true, service: true },
       });
 
-      const conflicts = existingAppts.filter((a) => {
+      const conflicts = existingAppts.filter((a: typeof existingAppts[number]) => {
         const aEnd = a.endTime ?? computeEndTime(a.time, 60);
         return rangesOverlap(time, endTime, a.time, aEnd);
       });
@@ -140,7 +140,7 @@ export async function POST(request: Request) {
           {
             error: "Conflicto de horario",
             conflict: true,
-            conflicts: conflicts.map((c) => ({
+            conflicts: conflicts.map((c: typeof conflicts[number]) => ({
               id: c.id,
               customerName: c.customerName,
               serviceName: c.service,

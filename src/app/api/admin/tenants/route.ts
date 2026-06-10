@@ -8,6 +8,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { requireSuperAdmin } from "@/lib/admin-helper";
 import { createClient } from "@supabase/supabase-js";
 import prisma from "@/lib/prisma";
+import type { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -161,7 +162,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Create everything in a transaction
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
       // 1. Create Tenant with all branding/config fields
       const tenant = await tx.tenant.create({
         data: {
