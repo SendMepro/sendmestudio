@@ -7,9 +7,47 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getAuthUser } from "@/lib/admin-helper";
 import prisma from "@/lib/prisma";
+import { z } from "zod";
+import { logFieldOverrideAttempt } from "@/lib/security/audit-log";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
+
+// ── Zod schemas for strict validation ──
+
+const businessSettingsSchema = z.object({
+  businessHours: z.any().optional(),
+  services: z.any().optional(),
+  stylists: z.any().optional(),
+  holidays: z.any().optional(),
+  lunchBreak: z.any().optional(),
+  lastAcceptedTime: z.string().optional(),
+  minimumBufferMinutes: z.number().int().min(0).optional(),
+  latePolicy: z.string().optional(),
+  brandTone: z.string().optional(),
+  shortDescription: z.string().optional(),
+  mainPromise: z.string().optional(),
+}).strict();
+
+const tenantBrandingSchema = z.object({
+  logoUrl: z.string().url().optional().or(z.literal("")),
+  bannerUrl: z.string().url().optional().or(z.literal("")),
+  primaryColor: z.string().optional(),
+  secondaryColor: z.string().optional(),
+  faviconUrl: z.string().url().optional().or(z.literal("")),
+  tagline: z.string().optional(),
+  businessName: z.string().optional(),
+  businessType: z.string().optional(),
+  timezone: z.string().optional(),
+  language: z.string().optional(),
+}).strict();
+
+// Fields that should NEVER be accepted from frontend
+const BLOCKED_FIELDS = [
+  "tenantId", "role", "isAdmin", "isSuperAdmin", "permissions",
+  "ownerId", "ownerEmail", "plan", "licenseStatus", "licenseExpiresAt",
+  "id", "createdAt", "updatedAt",
+];
 
 export async function GET(request: NextRequest) {
   const user = await getAuthUser(request);
@@ -92,50 +130,90 @@ export async function PATCH(request: NextRequest) {
   try {
     const body = await request.json();
 
-    // Allowed fields for business_settings
+    // ── Block forbidden fields ──
+    const blockedAttempt = BLOCKED_FIELDS.find((f) => body[f] !== undefined);
+    if (blockedAttempt) {
+      logFieldOverrideAttempt({
+        userId: user.id,
+        tenantId,
+        field: blockedAttempt,
+        path: request.url,
+        detail: `Blocked field '${blockedAttempt}' in PATCH body`,
+      });
+      return NextResponse.json(
+        { error: `Campo '${blockedAttempt}' no permitido en esta ruta` },
+        { status: 400 },
+      );
+    }
+
+    // Allowed field lists
     const allowedBsKeys = [
       "businessHours", "services", "stylists", "holidays",
       "lunchBreak", "lastAcceptedTime", "minimumBufferMinutes",
       "latePolicy", "brandTone", "shortDescription", "mainPromise",
     ];
-
-    // Allowed fields for tenant (branding)
     const allowedTenantKeys = [
       "logoUrl", "bannerUrl", "primaryColor", "secondaryColor",
       "faviconUrl", "tagline", "businessName", "businessType",
       "timezone", "language",
     ];
 
-    // Update business_settings
-    const bsData: any = {};
-    for (const key of allowedBsKeys) {
-      if (body[key] !== undefined) {
-        bsData[key] = body[key];
+    // ── Separate business settings from tenant branding ──
+    const bsPayload: Record<string, unknown> = {};
+    const tenantPayload: Record<string, unknown> = {};
+
+    for (const [key, value] of Object.entries(body)) {
+      if (allowedBsKeys.includes(key)) {
+        bsPayload[key] = value;
+      }
+      if (allowedTenantKeys.includes(key)) {
+        tenantPayload[key] = value;
       }
     }
 
-    // Update tenant branding
-    const tenantData: any = {};
-    for (const key of allowedTenantKeys) {
-      if (body[key] !== undefined) {
-        tenantData[key] = body[key];
-      }
+    // ── Zod validation ──
+    let bsResult: { success: true; data: Record<string, unknown> } | { success: false; error: any };
+    if (Object.keys(bsPayload).length > 0) {
+      bsResult = businessSettingsSchema.safeParse(bsPayload);
+    } else {
+      bsResult = { success: true, data: {} };
+    }
+
+    let tenantResult: { success: true; data: Record<string, unknown> } | { success: false; error: any };
+    if (Object.keys(tenantPayload).length > 0) {
+      tenantResult = tenantBrandingSchema.safeParse(tenantPayload);
+    } else {
+      tenantResult = { success: true, data: {} };
+    }
+
+    if (!bsResult.success) {
+      return NextResponse.json(
+        { error: "Datos inválidos en business settings", details: (bsResult as any).error.flatten() },
+        { status: 400 },
+      );
+    }
+
+    if (!tenantResult.success) {
+      return NextResponse.json(
+        { error: "Datos inválidos en branding", details: (tenantResult as any).error.flatten() },
+        { status: 400 },
+      );
     }
 
     const results: any = {};
 
-    if (Object.keys(bsData).length > 0) {
+    if (Object.keys(bsResult.data).length > 0) {
       results.businessSettings = await prisma.businessSettings.upsert({
         where: { tenantId },
-        create: { tenantId, ...bsData },
-        update: bsData,
+        create: { tenantId, ...bsResult.data },
+        update: bsResult.data,
       });
     }
 
-    if (Object.keys(tenantData).length > 0) {
+    if (Object.keys(tenantResult.data).length > 0) {
       results.tenant = await prisma.tenant.update({
         where: { id: tenantId },
-        data: tenantData,
+        data: tenantResult.data,
       });
     }
 
