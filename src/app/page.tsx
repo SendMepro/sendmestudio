@@ -288,9 +288,10 @@ function calculatePlatformHealth(): PlatformHealth {
 
 export default function Home() {
   const router = useRouter();
-  const { isSuperAdmin, isLoading: authLoading } = useAuthContext();
+  const { isSuperAdmin, isLoading: authLoading, isAuthenticated } = useAuthContext();
   const [gateResolved, setGateResolved] = useState(false);
   const [isImpersonating, setIsImpersonating] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -300,14 +301,25 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (authLoading || gateResolved) return;
+    if (redirecting) return;
+    if (authLoading) return;
+
+    // P0: No authenticated → redirect to login immediately
+    if (!isAuthenticated) {
+      setRedirecting(true);
+      router.replace("/login");
+      return;
+    }
+
+    if (gateResolved) return;
+
     if (isSuperAdmin && !isImpersonating) {
       setGateResolved(true);
       router.replace("/admin");
     } else {
       setGateResolved(true);
     }
-  }, [authLoading, isSuperAdmin, isImpersonating, router, gateResolved]);
+  }, [authLoading, isAuthenticated, isSuperAdmin, isImpersonating, router, gateResolved, redirecting]);
 
   if (!gateResolved) {
     return (

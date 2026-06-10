@@ -11,7 +11,10 @@ import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
 // Rutas públicas que no requieren autenticación
+// La raíz / sirve el landing público (public/index.html) para sendmestudio.com.
+// Para app.sendmestudio.com, el client-side redirect en page.tsx redirige a /login.
 const PUBLIC_ROUTES = [
+  "/",
   "/login",
   "/register",
   "/license-expired",
@@ -20,6 +23,7 @@ const PUBLIC_ROUTES = [
   "/api/auth/callback",
   "/api/auth/register",
   "/api/auth/session",
+  "/api/health",
   "/_next",
   "/favicon",
   "/images",
