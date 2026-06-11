@@ -61,7 +61,7 @@ export async function GET(request: Request) {
       orderBy: { updatedAt: "desc" },
     });
 
-    const profiles = records.map((r) => ({
+    const profiles = records.map((r: typeof records[number]) => ({
       ...(r.profile as any),
       phone: r.phone,
       signals: r.signals as any[],
