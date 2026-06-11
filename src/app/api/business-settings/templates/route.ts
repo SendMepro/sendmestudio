@@ -66,7 +66,7 @@ export async function GET(request: NextRequest) {
     let diff: any = null;
     if (previewTemplateId) {
       const diffs = await generatePreviewDiff(tenantId, previewTemplateId);
-      const tpl = templates.find((t) => t.id === previewTemplateId);
+      const tpl = templates.find((t: typeof templates[number]) => t.id === previewTemplateId);
 
       diff = {
         items: diffs,
