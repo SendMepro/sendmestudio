@@ -37,7 +37,7 @@ export async function GET(request: Request) {
     });
 
     const knowledgeResults = allKnowledge
-      .filter((item) => {
+      .filter((item: typeof allKnowledge[number]) => {
         const data = item.data as any;
         const searchFields = [
           item.key,
@@ -53,7 +53,7 @@ export async function GET(request: Request) {
         return searchFields.includes(query);
       })
       .slice(0, 20)
-      .map((item) => ({
+      .map((item: typeof allKnowledge[number]) => ({
         type: "knowledge",
         section: item.section,
         key: item.key,
