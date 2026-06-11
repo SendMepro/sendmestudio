@@ -69,7 +69,7 @@ export async function GET(request: Request) {
     }));
 
     const stats = {
-      totalSignals: records.reduce((sum, r) => sum + (Array.isArray(r.signals) ? r.signals.length : 0), 0),
+      totalSignals: records.reduce((sum: number, r: typeof records[number]) => sum + (Array.isArray(r.signals) ? r.signals.length : 0), 0),
       profilesWithParkingInterest: profiles.filter((p: any) => p.parkingInterest).length,
       profilesWithPriceSensitivity: profiles.filter((p: any) => p.priceSensitive).length,
       profilesWithAllergies: profiles.filter((p: any) => p.allergies?.length > 0).length,
