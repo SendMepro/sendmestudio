@@ -55,7 +55,7 @@ export async function GET(request: Request) {
     if (sectionFilter) {
       return NextResponse.json({
         ok: true,
-        items: items.map((item) => ({
+        items: items.map((item: typeof items[number]) => ({
           id: item.id,
           section: item.section,
           key: item.key || item.section,
