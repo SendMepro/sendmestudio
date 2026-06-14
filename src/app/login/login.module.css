@@ -126,6 +126,55 @@
   letter-spacing: 0.3px;
 }
 
+/* ── Brand title — gradient animated (matching sendmestudio.com) ── */
+.brandTitle {
+  margin: 0;
+  font-size: 42px;
+  font-weight: 200;
+  letter-spacing: -1.8px;
+  transform: scaleY(0.92);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(
+    110deg,
+    #5f6368,
+    #8e8ef4,
+    #56c7ff,
+    #7ee0c3,
+    #111111,
+    #111111,
+    #5f6368
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: studioGradient 12s ease-in-out infinite;
+  line-height: 1.1;
+  user-select: none;
+}
+
+.brandTagline {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 10px;
+  color: #9aa0a6;
+  font-weight: 450;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+@keyframes studioGradient {
+  0% { background-position: 0% 50%; }
+  18% { background-position: 42% 70%; }
+  34% { background-position: 85% 30%; }
+  48% { background-position: 130% 50%; }
+  58% { background-position: 160% 50%; }
+  72% { background-position: 160% 50%; }
+  88% { background-position: 80% 65%; }
+  100% { background-position: 0% 50%; }
+}
+
 .form {
   display: flex;
   flex-direction: column;

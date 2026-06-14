@@ -97,26 +97,14 @@ export default function LoginPage() {
       <div className={`${styles.dove} ${styles.dove3}`}>🕊</div>
 
       <div className={styles.glassCard}>
-        <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 0, marginBottom: 8 }}>
-          <img
-            src="/img/icon_sendme_studio.png"
-            alt="SendMe Studio"
-            width={54}
-            height={54}
-            style={{ objectFit: "contain", flexShrink: 0, marginTop: -6, position: "relative", left: 5 }}
-          />
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center" }}>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 0, lineHeight: 1 }}>
-              <span style={{ fontFamily: "'Arimo', sans-serif", fontWeight: 800, fontSize: 34, letterSpacing: "-0.04em", color: "#8262ff" }}>Send</span>
-              <span style={{ fontFamily: "'Arimo', sans-serif", fontWeight: 800, fontSize: 34, letterSpacing: "-0.04em", color: "#9c14ff" }}>Me</span>
-              <span style={{ fontFamily: "'Arimo', sans-serif", fontWeight: 600, fontSize: 11, letterSpacing: "0.06em", color: "#111111", lineHeight: 1, alignSelf: "baseline", marginBottom: 0 }}>
-                STUDIO
-              </span>
-            </div>
-            <span style={{ fontFamily: "'Inter', system-ui, sans-serif", fontSize: 10, color: "#9aa0a6", fontWeight: 450, letterSpacing: "0.1em", lineHeight: 1, marginTop: 0, paddingLeft: 5, position: "relative", top: -3 }}>
-              Business workspace
-            </span>
-          </div>
+        {/* SendMe Studio — brand gradient animated matching sendmestudio.com */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, marginBottom: 12 }}>
+          <h1 className={styles.brandTitle}>
+            SendMe Studio
+          </h1>
+          <span className={styles.brandTagline}>
+            Business workspace
+          </span>
         </div>
 
         <form onSubmit={handleSubmit} className={styles.form}>
